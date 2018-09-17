@@ -11,7 +11,7 @@ Axlsx: Office Open XML Spreadsheet Generation
 
 **Latest Version**: 3.0.0
 
-**Ruby Version**: 2.2+
+**Ruby Version**: Tested agains supported MRI versions. Currently 2.3 and above.
 
 **JRuby Version**: 1.9 modes
 
