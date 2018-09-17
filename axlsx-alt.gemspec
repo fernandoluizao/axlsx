@@ -1,11 +1,11 @@
 require File.expand_path('../lib/axlsx/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = 'axlsx'
+  s.name        = 'axlsx-alt'
   s.version     = Axlsx::VERSION
   s.authors     = ["Randy Morgan", "Jurriaan Pruis"]
   s.email       = 'digital.ipseity@gmail.com'
-  s.homepage    = 'https://github.com/randym/axlsx'
+  s.homepage    = 'https://github.com/fernandoluizao/axlsx'
   s.platform    = Gem::Platform::RUBY
   s.date        = Time.now.strftime('%Y-%m-%d')
   s.summary     = "Excel OOXML (xlsx) with charts, styles, images and autowidth columns."
@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
   s.files = Dir.glob("{lib/**/*,examples/**/*.rb,examples/**/*.jpeg}") + %w{ LICENSE README.md Rakefile CHANGELOG.md .yardopts .yardopts_guide }
   s.test_files  = Dir.glob("{test/**/*}")
 
-  s.add_runtime_dependency 'nokogiri', '~> 1.8', '>= 1.8.2'
-  s.add_runtime_dependency 'rubyzip','~> 1.2', '>= 1.2.1'
-  s.add_runtime_dependency "htmlentities", "~> 4.3", '>= 4.3.4'
-  s.add_runtime_dependency "mimemagic", '~> 0.3'
+  s.add_runtime_dependency 'nokogiri', '>= 1.8.2'
+  s.add_runtime_dependency 'rubyzip', '>= 1.2.1'
+  s.add_runtime_dependency 'htmlentities', '>= 4.3.4'
+  s.add_runtime_dependency 'mimemagic'
 
   s.add_development_dependency 'yard', "~> 0.9.8"
   s.add_development_dependency 'kramdown', '~> 1.16', '>= 1.16.2'
