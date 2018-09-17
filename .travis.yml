@@ -5,13 +5,6 @@ group: beta
 cache: bundler
 bundler_args: --without profile
 
-notifications:
-  irc: "irc.freenode.org#axlsx"
-  email:
-    recipients:
-      - digital.ipseity@gmail.com
-    on_success: always
-
 matrix:
   include:
     - rvm: 2.2.8
