@@ -1,22 +1,22 @@
 # encoding: UTF-8
 module Axlsx
-  require 'axlsx/stylesheet/border.rb'
-  require 'axlsx/stylesheet/border_pr.rb'
-  require 'axlsx/stylesheet/cell_alignment.rb'
-  require 'axlsx/stylesheet/cell_style.rb'
-  require 'axlsx/stylesheet/color.rb'
-  require 'axlsx/stylesheet/fill.rb'
-  require 'axlsx/stylesheet/font.rb'
-  require 'axlsx/stylesheet/gradient_fill.rb'
-  require 'axlsx/stylesheet/gradient_stop.rb'
-  require 'axlsx/stylesheet/num_fmt.rb'
-  require 'axlsx/stylesheet/pattern_fill.rb'
-  require 'axlsx/stylesheet/table_style.rb'
-  require 'axlsx/stylesheet/table_styles.rb'
-  require 'axlsx/stylesheet/table_style_element.rb'
-  require 'axlsx/stylesheet/dxf.rb'
-  require 'axlsx/stylesheet/xf.rb'
-  require 'axlsx/stylesheet/cell_protection.rb'
+  require 'axlsx/stylesheet/border'
+  require 'axlsx/stylesheet/border_pr'
+  require 'axlsx/stylesheet/cell_alignment'
+  require 'axlsx/stylesheet/cell_style'
+  require 'axlsx/stylesheet/color'
+  require 'axlsx/stylesheet/fill'
+  require 'axlsx/stylesheet/font'
+  require 'axlsx/stylesheet/gradient_fill'
+  require 'axlsx/stylesheet/gradient_stop'
+  require 'axlsx/stylesheet/num_fmt'
+  require 'axlsx/stylesheet/pattern_fill'
+  require 'axlsx/stylesheet/table_style'
+  require 'axlsx/stylesheet/table_styles'
+  require 'axlsx/stylesheet/table_style_element'
+  require 'axlsx/stylesheet/dxf'
+  require 'axlsx/stylesheet/xf'
+  require 'axlsx/stylesheet/cell_protection'
 
   #The Styles class manages worksheet styles
   # In addition to creating the require style objects for a valid xlsx package, this class provides the key mechanism for adding styles to your workbook, and safely applying them to the cells of your worksheet.
@@ -133,7 +133,7 @@ module Axlsx
     # @option options [Integer] family The font family to use.
     # @option options [String] font_name The name of the font to use
     # @option options [Integer] num_fmt The number format to apply
-    # @option options [String] format_code The formatting to apply. 
+    # @option options [String] format_code The formatting to apply.
     # @option options [Integer|Hash] border The border style to use.
     #   borders support style, color and edges options @see parse_border_options
     # @option options [String] bg_color The background color to apply to the cell
@@ -144,7 +144,6 @@ module Axlsx
     # @see CellAlignment
     #
     # @example You Got Style
-    #   require "rubygems" # if that is your preferred way to manage gems!
     #   require "axlsx"
     #
     #   p = Axlsx::Package.new
@@ -161,7 +160,6 @@ module Axlsx
     #
     # @example Styling specifically
     #   # an example of applying specific styles to specific cells
-    #   require "rubygems" # if that is your preferred way to manage gems!
     #   require "axlsx"
     #
     #   p = Axlsx::Package.new
@@ -195,7 +193,6 @@ module Axlsx
     #
     # @example Differential styling
     #   # Differential styles apply on top of cell styles. Used in Conditional Formatting. Must specify :type => :dxf, and you can't use :num_fmt.
-    #   require "rubygems" # if that is your preferred way to manage gems!
     #   require "axlsx"
     #
     #   p = Axlsx::Package.new
@@ -305,12 +302,12 @@ module Axlsx
 
     # parses Style#add_style options for borders.
     # @note noop if :border is not specified in options
-    # @option options [Hash|Integer] A border style definition hash or the index of an existing border. 
-    # Border style definition hashes must include :style and :color key-value entries and 
-    # may include an :edges entry that references an array of symbols identifying which border edges 
+    # @option options [Hash|Integer] A border style definition hash or the index of an existing border.
+    # Border style definition hashes must include :style and :color key-value entries and
+    # may include an :edges entry that references an array of symbols identifying which border edges
     # you wish to apply the style or any other valid Border initializer options.
     # If the :edges entity is not provided the style is applied to all edges of cells that reference this style.
-	# Also available :border_top, :border_right, :border_bottom and :border_left options with :style and/or :color 
+	# Also available :border_top, :border_right, :border_bottom and :border_left options with :style and/or :color
 	# key-value entries, which override :border values.
     # @example
     #   #apply a thick red border to the top and bottom
@@ -417,4 +414,3 @@ module Axlsx
     end
   end
 end
-

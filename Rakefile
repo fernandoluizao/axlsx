@@ -1,11 +1,11 @@
-require File.expand_path(File.dirname(__FILE__) + '/lib/axlsx/version.rb')
+require File.expand_path(File.dirname(__FILE__) + '/lib/axlsx/version')
 
 task :build => :gendoc do
   system "gem build axlsx-alt.gemspec"
 end
 
 task :benchmark do
-  require File.expand_path(File.dirname(__FILE__) + '/test/benchmark.rb')
+  require File.expand_path(File.dirname(__FILE__) + '/test/benchmark')
 end
 
 task :gendoc do

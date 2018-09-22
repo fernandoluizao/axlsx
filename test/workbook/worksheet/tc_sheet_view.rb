@@ -1,6 +1,6 @@
 # encoding: UTF-8
 $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../../"
-require 'tc_helper.rb'
+require 'tc_helper'
 
 class TestSheetView < Test::Unit::TestCase
   def setup

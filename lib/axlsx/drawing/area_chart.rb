@@ -4,7 +4,6 @@ module Axlsx
   # The AreaChart is a two dimentional line chart (who would have guessed?) that you can add to your worksheet.
   # @example Creating a chart
   #   # This example creates a line in a single sheet.
-  #   require "rubygems" # if that is your preferred way to manage gems!
   #   require "axlsx"
   #
   #   p = Axlsx::Package.new

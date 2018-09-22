@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require 'tc_helper.rb'
+require 'tc_helper'
 
 class TestDateTimeConverter < Test::Unit::TestCase
   def setup

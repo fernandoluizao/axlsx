@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require 'tc_helper.rb'
+require 'tc_helper'
 
 class TestSelection < Test::Unit::TestCase
   def setup

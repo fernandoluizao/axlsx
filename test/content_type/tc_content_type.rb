@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require 'tc_helper.rb'
+require 'tc_helper'
 
 class TestContentType < Test::Unit::TestCase
   def setup

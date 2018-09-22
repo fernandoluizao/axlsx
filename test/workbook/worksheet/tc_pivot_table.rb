@@ -1,4 +1,4 @@
-require 'tc_helper.rb'
+require 'tc_helper'
 
 
 def shared_test_pivot_table_xml_validity(pivot_table)

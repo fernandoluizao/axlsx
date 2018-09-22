@@ -1,28 +1,28 @@
 # encoding: UTF-8
 require 'htmlentities'
-require 'axlsx/version.rb'
+require 'axlsx/version'
 require 'mimemagic'
 
-require 'axlsx/util/simple_typed_list.rb'
-require 'axlsx/util/constants.rb'
-require 'axlsx/util/validators.rb'
-require 'axlsx/util/accessors.rb'
+require 'axlsx/util/simple_typed_list'
+require 'axlsx/util/constants'
+require 'axlsx/util/validators'
+require 'axlsx/util/accessors'
 require 'axlsx/util/serialized_attributes'
 require 'axlsx/util/options_parser'
 # to be included with parsable intitites.
-#require 'axlsx/util/parser.rb'
+#require 'axlsx/util/parser'
 require 'axlsx/util/mime_type_utils'
 
-require 'axlsx/stylesheet/styles.rb'
+require 'axlsx/stylesheet/styles'
 
-require 'axlsx/doc_props/app.rb'
-require 'axlsx/doc_props/core.rb'
-require 'axlsx/content_type/content_type.rb'
-require 'axlsx/rels/relationships.rb'
+require 'axlsx/doc_props/app'
+require 'axlsx/doc_props/core'
+require 'axlsx/content_type/content_type'
+require 'axlsx/rels/relationships'
 
-require 'axlsx/drawing/drawing.rb'
-require 'axlsx/workbook/workbook.rb'
-require 'axlsx/package.rb'
+require 'axlsx/drawing/drawing'
+require 'axlsx/workbook/workbook'
+require 'axlsx/package'
 #required gems
 require 'nokogiri'
 require 'zip'
