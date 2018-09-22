@@ -13,9 +13,9 @@ p.workbook do |wb|
   percent = styles.add_style :num_fmt => Axlsx::NUM_FMT_PERCENT, :border => Axlsx::STYLE_THIN_BORDER
 
   # define the style for conditional formatting - its the :dxf bit that counts!
-  profitable =  styles.add_style :fg_color => 'FF428751', :sz => 12, :type => :dxf, :b => true
+  profitable = styles.add_style :fg_color => 'FF428751', :sz => 12, :type => :dxf, :b => true
 
-  wb.add_worksheet(:name => 'Data Bar Conditional Formatting') do  |ws|
+  wb.add_worksheet(:name => 'Data Bar Conditional Formatting') do |ws|
     ws.add_row ['A$$le Q1 Revenue Historical Analysis (USD)'], :style => title
     ws.add_row
     ws.add_row ['Quarter', 'Profit', '% of Total'], :style => header

@@ -29,5 +29,4 @@ class TestSeriesTitle < Test::Unit::TestCase
     @title.cell = @row.cells.first
     assert(@title.text == "one")
   end
-
 end

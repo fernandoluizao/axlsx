@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 module Axlsx
-
   # Comments is a collection of Comment objects for a worksheet
   class Comments < SimpleTypedList
-
     # the vml_drawing that holds the shapes for comments
     # @return [VmlDrawing]
     attr_reader :vml_drawing
@@ -21,13 +19,14 @@ module Axlsx
     # The part name for this object
     # @return [String]
     def pn
-      "#{COMMENT_PN % (index+1)}"
+      "#{COMMENT_PN % (index + 1)}"
     end
 
     # Creates a new Comments object
     # @param [Worksheet] worksheet The sheet that these comments belong to.
     def initialize(worksheet)
       raise ArgumentError, "you must provide a worksheet" unless worksheet.is_a?(Worksheet)
+
       super(Comment)
       @worksheet = worksheet
       @vml_drawing = VmlDrawing.new(self)
@@ -38,10 +37,11 @@ module Axlsx
     # @option options [String] author The name of the author for this comment
     # @option options [String] text The text for this comment
     # @option options [Stirng|Cell] ref The cell that this comment is attached to.
-    def add_comment(options={})
+    def add_comment(options = {})
       raise ArgumentError, "Comment require an author" unless options[:author]
       raise ArgumentError, "Comment requires text" unless options[:text]
       raise ArgumentError, "Comment requires ref" unless options[:ref]
+
       self << Comment.new(self, options)
       yield last if block_given?
       clear_author_caches
@@ -71,10 +71,10 @@ module Axlsx
     # serialize the object
     # @param [String] str
     # @return [String]
-    def to_xml_string(str="")
+    def to_xml_string(str = "")
       str << '<?xml version="1.0" encoding="UTF-8"?>'
       str << ('<comments xmlns="' << XML_NS << '"><authors>')
-      authors.each do  |author|
+      authors.each do |author|
         str << ('<author>' << author.to_s << '</author>')
       end
       str << '</authors><commentList>'
@@ -82,7 +82,6 @@ module Axlsx
         comment.to_xml_string str
       end
       str << '</commentList></comments>'
-
     end
 
     protected
@@ -91,7 +90,5 @@ module Axlsx
       @authors = nil
       @author_indexes = nil
     end
-
   end
-
 end

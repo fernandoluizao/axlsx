@@ -1,6 +1,5 @@
 require 'tc_helper'
 
-
 def shared_test_pivot_table_xml_validity(pivot_table)
   schema = Nokogiri::XML::Schema(File.open(Axlsx::SML_XSD))
   doc = Nokogiri::XML(pivot_table.to_xml_string)
@@ -17,8 +16,8 @@ class TestPivotTable < Test::Unit::TestCase
     p = Axlsx::Package.new
     @ws = p.workbook.add_worksheet
 
-    @ws << ["Year","Month","Region", "Type", "Sales"]
-    @ws << [2012,  "Nov",  "East",   "Soda", "12345"]
+    @ws << ["Year", "Month", "Region", "Type", "Sales"]
+    @ws << [2012, "Nov", "East", "Soda", "12345"]
   end
 
   def test_initialization
@@ -55,21 +54,21 @@ class TestPivotTable < Test::Unit::TestCase
     end
     assert_equal(['Year', 'Month'], pivot_table.rows)
     assert_equal(['Type'], pivot_table.columns)
-    assert_equal([{:ref=>"Sales"}], pivot_table.data)
+    assert_equal([{ :ref => "Sales" }], pivot_table.data)
     assert_equal(['Region'], pivot_table.pages)
     shared_test_pivot_table_xml_validity(pivot_table)
   end
 
   def test_add_pivot_table_with_options_on_data_field
     pivot_table = @ws.add_pivot_table('G5:G6', 'A1:D5') do |pt|
-      pt.data = [{:ref=>"Sales", :subtotal => 'average'}]
+      pt.data = [{ :ref => "Sales", :subtotal => 'average' }]
     end
-    assert_equal([{:ref=>"Sales", :subtotal => 'average'}], pivot_table.data)
+    assert_equal([{ :ref => "Sales", :subtotal => 'average' }], pivot_table.data)
   end
 
   def test_add_pivot_table_with_style_info
-    style_info_data = { :name=>"PivotStyleMedium9", :showRowHeaders=>"1", :showLastColumn=>"0"}
-    pivot_table = @ws.add_pivot_table('G5:G6', 'A1:E5', {:style_info=>style_info_data}) do |pt|
+    style_info_data = { :name => "PivotStyleMedium9", :showRowHeaders => "1", :showLastColumn => "0" }
+    pivot_table = @ws.add_pivot_table('G5:G6', 'A1:E5', { :style_info => style_info_data }) do |pt|
       pt.rows = ['Year', 'Month']
       pt.columns = ['Type']
       pt.data = ['Sales']
@@ -80,20 +79,20 @@ class TestPivotTable < Test::Unit::TestCase
   end
 
   def test_add_pivot_table_with_row_without_subtotals
-    pivot_table = @ws.add_pivot_table('G5:G6', 'A1:D5', {:no_subtotals_on_headers=>['Year']}) do |pt|
+    pivot_table = @ws.add_pivot_table('G5:G6', 'A1:D5', { :no_subtotals_on_headers => ['Year'] }) do |pt|
       pt.data = ['Sales']
-      pt.rows = ['Year','Month']
+      pt.rows = ['Year', 'Month']
     end
     assert_equal(['Year'], pivot_table.no_subtotals_on_headers)
   end
 
   def test_header_indices
     pivot_table = @ws.add_pivot_table('G5:G6', 'A1:E5')
-    assert_equal(0,   pivot_table.header_index_of('Year'   ))
-    assert_equal(1,   pivot_table.header_index_of('Month'  ))
-    assert_equal(2,   pivot_table.header_index_of('Region' ))
-    assert_equal(3,   pivot_table.header_index_of('Type'   ))
-    assert_equal(4,   pivot_table.header_index_of('Sales'  ))
+    assert_equal(0,   pivot_table.header_index_of('Year'))
+    assert_equal(1,   pivot_table.header_index_of('Month'))
+    assert_equal(2,   pivot_table.header_index_of('Region'))
+    assert_equal(3,   pivot_table.header_index_of('Type'))
+    assert_equal(4,   pivot_table.header_index_of('Sales'))
     assert_equal(nil, pivot_table.header_index_of('Missing'))
     assert_equal(%w(A1 B1 C1 D1 E1), pivot_table.header_cell_refs)
   end
@@ -117,7 +116,7 @@ class TestPivotTable < Test::Unit::TestCase
   end
 
   def test_to_xml_string
-    pivot_table = @ws.add_pivot_table('G5:G6', 'A1:E5', {:no_subtotals_on_headers=>['Year']}) do |pt|
+    pivot_table = @ws.add_pivot_table('G5:G6', 'A1:E5', { :no_subtotals_on_headers => ['Year'] }) do |pt|
       pt.rows = ['Year', 'Month']
       pt.columns = ['Type']
       pt.data = ['Sales']
@@ -128,7 +127,7 @@ class TestPivotTable < Test::Unit::TestCase
 
   def test_to_xml_string_with_options_on_data_field
     pivot_table = @ws.add_pivot_table('G5:G6', 'A1:E5') do |pt|
-      pt.data = [{:ref=>"Sales", :subtotal => 'average'}]
+      pt.data = [{ :ref => "Sales", :subtotal => 'average' }]
     end
     shared_test_pivot_table_xml_validity(pivot_table)
   end

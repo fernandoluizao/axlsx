@@ -15,7 +15,7 @@ p.workbook do |wb|
   # define the style for conditional formatting - its the :dxf bit that counts!
   profitable = styles.add_style :fg_color => 'FF428751', :sz => 12, :type => :dxf, :b => true
 
-  wb.add_worksheet(:name => 'The High Notes') do  |ws|
+  wb.add_worksheet(:name => 'The High Notes') do |ws|
     ws.add_row ['A$$le Q1 Revenue Historical Analysis (USD)'], :style => title
     ws.add_row
     ws.add_row ['Quarter', 'Profit', '% of Total'], :style => header

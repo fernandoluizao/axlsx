@@ -1,10 +1,9 @@
 require 'tc_helper'
 
 class TestRow < Test::Unit::TestCase
-
   def setup
     p = Axlsx::Package.new
-    @ws = p.workbook.add_worksheet :name=>"hmmm"
+    @ws = p.workbook.add_worksheet :name => "hmmm"
     @row = @ws.add_row
   end
 
@@ -16,19 +15,19 @@ class TestRow < Test::Unit::TestCase
   end
 
   def test_initialize_with_fixed_height
-    row = @ws.add_row([1,2,3,4,5], :height=>40)
+    row = @ws.add_row([1, 2, 3, 4, 5], :height => 40)
     assert_equal(40, row.height)
     assert(row.custom_height)
   end
 
   def test_style
-    r = @ws.add_row([1,2,3,4,5])
-    r.style=1
-    r.cells.each { |c| assert_equal(c.style,1) }
+    r = @ws.add_row([1, 2, 3, 4, 5])
+    r.style = 1
+    r.cells.each { |c| assert_equal(c.style, 1) }
   end
 
   def test_color
-    r = @ws.add_row([1,2,3,4,5])
+    r = @ws.add_row([1, 2, 3, 4, 5])
     r.color = "FF00FF00"
     r.cells.each { |c| assert_equal(c.color.rgb, "FF00FF00") }
   end
@@ -49,15 +48,14 @@ class TestRow < Test::Unit::TestCase
   end
 
   def test_array_to_cells
-    r = @ws.add_row [1,2,3], :style=>1, :types=>[:integer, :string, :float]
+    r = @ws.add_row [1, 2, 3], :style => 1, :types => [:integer, :string, :float]
     assert_equal(r.cells.size, 3)
     r.cells.each do |c|
       assert_equal(c.style, 1)
     end
-    r = @ws.add_row [1,2,3], :style=>[1]
+    r = @ws.add_row [1, 2, 3], :style => [1]
     assert_equal(r.cells.first.style, 1, "only apply style to cells with at the same index of of the style array")
     assert_equal(r.cells.last.style, 0, "only apply style to cells with at the same index of of the style array")
-
   end
 
   def test_custom_height
@@ -70,7 +68,6 @@ class TestRow < Test::Unit::TestCase
     assert_nothing_raised { @row.height = 15 }
     assert_equal(15, @row.height)
   end
-
 
   def test_ph
     assert_raise(ArgumentError) { @row.ph = -3 }
@@ -118,5 +115,4 @@ class TestRow < Test::Unit::TestCase
     r_s_xml = Nokogiri::XML(@row.to_xml_string(0, ''))
     assert_equal(r_s_xml.xpath(".//row[@r=1][@ht=20][@customHeight=1]").size, 1)
   end
-
 end

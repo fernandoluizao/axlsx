@@ -18,11 +18,9 @@ wb.add_worksheet do |ws|
 end
 wb.add_worksheet do |ws|
   img = File.expand_path('../image1.jpeg', __FILE__)
-  ws.add_image(:image_src => img, :start_at => [1,1]) do |image|
+  ws.add_image(:image_src => img, :start_at => [1, 1]) do |image|
     image.end_at "E7"
   end
 end
-
-
 
 xls.serialize 'anchor.xlsx'

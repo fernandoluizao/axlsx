@@ -1,9 +1,8 @@
 # encoding: UTF-8
-module Axlsx
 
+module Axlsx
   # An default content part. These parts are automatically created by for you based on the content of your package.
   class Default < AbstractContentType
-
     # The serialization node name for this class
     NODE_NAME = 'Default'
 
@@ -17,9 +16,8 @@ module Axlsx
     alias :Extension= :extension=
 
     # Serializes this object to xml
-    def to_xml_string(str ='')
+    def to_xml_string(str = '')
       super(NODE_NAME, str)
     end
   end
-
 end

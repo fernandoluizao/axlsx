@@ -1,15 +1,15 @@
 # encoding: UTF-8
+
 module Axlsx
   # The Dxf class defines an incremental formatting record for use in Styles. The recommended way to manage styles for your workbook is with Styles#add_style
   # @see Styles#add_style
   class Dxf
-
     include Axlsx::OptionsParser
 
     # The order in which the child elements is put in the XML seems to
     # be important for Excel
     CHILD_ELEMENTS = [:font, :numFmt, :fill, :alignment, :border, :protection]
-    #does not support extList (ExtensionList)
+    # does not support extList (ExtensionList)
 
     # The cell alignment for this style
     # @return [CellAlignment]
@@ -44,20 +44,25 @@ module Axlsx
     # @option options [Font] font
     # @option options [CellAlignment] alignment
     # @option options [CellProtection] protection
-    def initialize(options={})
+    def initialize(options = {})
       parse_options options
     end
 
     # @see Dxf#alignment
     def alignment=(v) DataTypeValidator.validate "Dxf.alignment", CellAlignment, v; @alignment = v end
+
     # @see protection
     def protection=(v) DataTypeValidator.validate "Dxf.protection", CellProtection, v; @protection = v end
+
     # @see numFmt
     def numFmt=(v) DataTypeValidator.validate "Dxf.numFmt", NumFmt, v; @numFmt = v end
+
     # @see font
     def font=(v) DataTypeValidator.validate "Dxf.font", Font, v; @font = v end
+
     # @see border
     def border=(v) DataTypeValidator.validate "Dxf.border", Border, v; @border = v end
+
     # @see fill
     def fill=(v) DataTypeValidator.validate "Dxf.fill", Fill, v; @fill = v end
 
@@ -73,7 +78,5 @@ module Axlsx
       end
       str << '</dxf>'
     end
-
   end
-
 end

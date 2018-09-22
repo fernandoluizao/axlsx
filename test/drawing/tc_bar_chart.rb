@@ -1,7 +1,6 @@
 require 'tc_helper'
 
 class TestBarChart < Test::Unit::TestCase
-
   def setup
     @p = Axlsx::Package.new
     ws = @p.workbook.add_worksheet
@@ -26,24 +25,23 @@ class TestBarChart < Test::Unit::TestCase
     assert(@chart.bar_dir == :col)
   end
 
- def test_grouping
-   assert_raise(ArgumentError, "require valid grouping") { @chart.grouping = :inverted }
-   assert_nothing_raised("allow valid grouping") { @chart.grouping = :standard }
-   assert(@chart.grouping == :standard)
- end
+  def test_grouping
+    assert_raise(ArgumentError, "require valid grouping") { @chart.grouping = :inverted }
+    assert_nothing_raised("allow valid grouping") { @chart.grouping = :standard }
+    assert(@chart.grouping == :standard)
+  end
 
+  def test_gapWidth
+    assert_raise(ArgumentError, "require valid gap width") { @chart.gap_width = 200 }
+    assert_nothing_raised("allow valid gapWidth") { @chart.gap_width = "200%" }
+    assert(@chart.gap_width == "200%")
+  end
 
- def test_gapWidth
-   assert_raise(ArgumentError, "require valid gap width") { @chart.gap_width = 200 }
-   assert_nothing_raised("allow valid gapWidth") { @chart.gap_width = "200%" }
-   assert(@chart.gap_width == "200%")
- end
-
- def test_gapDepth
-   assert_raise(ArgumentError, "require valid gap_depth") { @chart.gap_depth = 200 }
-   assert_nothing_raised("allow valid gap_depth") { @chart.gap_depth = "200%" }
-   assert(@chart.gap_depth == "200%")
- end
+  def test_gapDepth
+    assert_raise(ArgumentError, "require valid gap_depth") { @chart.gap_depth = 200 }
+    assert_nothing_raised("allow valid gap_depth") { @chart.gap_depth = "200%" }
+    assert(@chart.gap_depth == "200%")
+  end
 
   def test_shape
     assert_raise(ArgumentError, "require valid shape") { @chart.shape = :star }

@@ -1,10 +1,8 @@
-
 # encoding: UTF-8
-module Axlsx
 
+module Axlsx
   # An override content part. These parts are automatically created by for you based on the content of your package.
   class Override < AbstractContentType
-
     # Serialization node name for this object
     NODE_NAME = 'Override'
 

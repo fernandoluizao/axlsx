@@ -5,7 +5,6 @@ require 'date'
 p = Axlsx::Package.new
 wb = p.workbook
 wb.styles do |style|
-
   # Date/Time Styles
   #
   # The most important thing to remember about OOXML styles is that they are
@@ -13,7 +12,7 @@ wb.styles do |style|
   # requires to render the cell the way you want. A good example of this is
   # changing the font size for a date. You cannot specify just the font size,
   # you must also specify the number format or format code so that renders
-  # know how to display the serialized date float value 
+  # know how to display the serialized date float value
   #
   # The parts that make up a custom styles are:
   #
@@ -49,18 +48,14 @@ wb.styles do |style|
   custom_format = wb.styles.add_style :sz => 20, :format_code => 'yyyy-mm-dd'
 
   # A style that overrides top and left border style
-  override_border = wb.styles.add_style :border => { :style => :thin, :color =>"FAAC58", :edges => [:right, :top, :left] }, :border_top => { :style => :thick, :color => "01DF74" }, :border_left => { :color => "0101DF" }
-
+  override_border = wb.styles.add_style :border => { :style => :thin, :color => "FAAC58", :edges => [:right, :top, :left] }, :border_top => { :style => :thick, :color => "01DF74" }, :border_left => { :color => "0101DF" }
 
   wb.add_worksheet do |sheet|
-
     # We then apply those styles positionally
     sheet.add_row [123, "123", Time.now], style: [nil, large_font, predefined_format]
     sheet.add_row [123, "123", Date.new(2012, 9, 14)], style: [large_font, nil, custom_format]
     sheet.add_row [123, "123", Date.new(2000, 9, 12)] # This uses the axlsx default format_code (14)
     sheet.add_row [123, "123", Time.now], style: [large_font, override_border, predefined_format]
   end
-
 end
 p.serialize 'styles.xlsx'
-

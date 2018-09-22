@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Axlsx
   require 'axlsx/content_type/abstract_content_type'
   require 'axlsx/content_type/default'
@@ -6,7 +7,6 @@ module Axlsx
 
   # ContentTypes used in the package. This is automatically managed by the package package.
   class ContentType < SimpleTypedList
-
     def initialize
       super [Override, Default]
     end
@@ -20,7 +20,5 @@ module Axlsx
       each { |type| type.to_xml_string(str) }
       str << '</Types>'
     end
-
   end
-
 end

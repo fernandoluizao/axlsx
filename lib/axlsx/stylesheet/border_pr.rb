@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Axlsx
   # A border part.
   class BorderPr
@@ -44,17 +45,19 @@ module Axlsx
     # @option options [Symbol] name
     # @option options [Symbol] style
     # @see Axlsx::Border
-    def initialize(options={})
+    def initialize(options = {})
       parse_options(options)
-      #options.each do |o|
+      # options.each do |o|
       #  self.send("#{o[0]}=", o[1]) if self.respond_to? "#{o[0]}="
-      #end
+      # end
     end
 
     # @see name
     def name=(v) RestrictionValidator.validate "BorderPr.name", [:start, :end, :left, :right, :top, :bottom, :diagonal, :vertical, :horizontal], v; @name = v end
+
     # @see color
     def color=(v) DataTypeValidator.validate(:color, Color, v); @color = v end
+
     # @see style
     def style=(v) RestrictionValidator.validate "BorderPr.style", [:none, :thin, :medium, :dashed, :dotted, :thick, :double, :hair, :mediumDashed, :dashDot, :mediumDashDot, :dashDotDot, :mediumDashDotDot, :slantDashDot], v; @style = v end
 
@@ -66,6 +69,5 @@ module Axlsx
       @color.to_xml_string(str) if @color.is_a?(Color)
       str << ('</' << @name.to_s << '>')
     end
-
   end
 end

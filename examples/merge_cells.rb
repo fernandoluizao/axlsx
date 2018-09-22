@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/../lib"
 
-#```ruby
+# ```ruby
 require 'axlsx'
 package = Axlsx::Package.new
 package.workbook do |workbook|

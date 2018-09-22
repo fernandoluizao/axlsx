@@ -1,5 +1,4 @@
 module Axlsx
-
   # XML Encoding
   ENCODING = "UTF-8".freeze
 
@@ -96,7 +95,7 @@ module Axlsx
   # comment relation for nil target
   COMMENT_R_NULL = "http://purl.oclc.org/ooxml/officeDocument/relationships/comments".freeze
 
-  #vml drawing relation namespace
+  # vml drawing relation namespace
   VML_DRAWING_R = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/vmlDrawing'
 
   # VML Drawing content type
@@ -159,9 +158,8 @@ module Axlsx
   # png content type
   PNG_CT = "image/png".freeze
 
-  #drawing content type
+  # drawing content type
   DRAWING_CT = "application/vnd.openxmlformats-officedocument.drawing+xml".freeze
-
 
   # xml content type extensions
   XML_EX = "xml".freeze
@@ -239,7 +237,7 @@ module Axlsx
   COMMENT_PN = "comments%d.xml".freeze
 
   # location of schema files for validation
-  SCHEMA_BASE = (File.dirname(__FILE__)+'/../../schema/').freeze
+  SCHEMA_BASE = (File.dirname(__FILE__) + '/../../schema/').freeze
 
   # App validation schema
   APP_XSD = (SCHEMA_BASE + "shared-documentPropertiesExtended.xsd").freeze
@@ -343,39 +341,39 @@ module Axlsx
   # The following are not dealt with.
   # If you have this in your data, expect excel to blow up!
   #
-  # x7F	Delete
-  # x80	Control 0080
-  # x81	Control 0081
-  # x82	Break Permitted Here
-  # x83	No Break Here
-  # x84	Control 0084
-  # x85	Next Line (Nel)
-  # x86	Start Of Selected Area
-  # x87	End Of Selected Area
-  # x88	Character Tabulation Set
-  # x89	Character Tabulation With Justification
-  # x8A	Line Tabulation Set
-  # x8B	Partial Line Forward
-  # x8C	Partial Line Backward
-  # x8D	Reverse Line Feed
-  # x8E	Single Shift Two
-  # x8F	Single Shift Three
-  # x90	Device Control String
-  # x91	Private Use One
-  # x92	Private Use Two
-  # x93	Set Transmit State
-  # x94	Cancel Character
-  # x95	Message Waiting
-  # x96	Start Of Guarded Area
-  # x97	End Of Guarded Area
-  # x98	Start Of String
-  # x99	Control 0099
-  # x9A	Single Character Introducer
-  # x9B	Control Sequence Introducer
-  # x9C	String Terminator
-  # x9D	Operating System Command
-  # x9E	Privacy Message
-  # x9F	Application Program Command
+  # x7F  Delete
+  # x80  Control 0080
+  # x81  Control 0081
+  # x82  Break Permitted Here
+  # x83  No Break Here
+  # x84  Control 0084
+  # x85  Next Line (Nel)
+  # x86  Start Of Selected Area
+  # x87  End Of Selected Area
+  # x88  Character Tabulation Set
+  # x89  Character Tabulation With Justification
+  # x8A  Line Tabulation Set
+  # x8B  Partial Line Forward
+  # x8C  Partial Line Backward
+  # x8D  Reverse Line Feed
+  # x8E  Single Shift Two
+  # x8F  Single Shift Three
+  # x90  Device Control String
+  # x91  Private Use One
+  # x92  Private Use Two
+  # x93  Set Transmit State
+  # x94  Cancel Character
+  # x95  Message Waiting
+  # x96  Start Of Guarded Area
+  # x97  End Of Guarded Area
+  # x98  Start Of String
+  # x99  Control 0099
+  # x9A  Single Character Introducer
+  # x9B  Control Sequence Introducer
+  # x9C  String Terminator
+  # x9D  Operating System Command
+  # x9E  Privacy Message
+  # x9F  Application Program Command
   #
   # The following are allowed:
   #

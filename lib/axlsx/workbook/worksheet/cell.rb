@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 require 'cgi'
 module Axlsx
   # A cell in a worksheet.
@@ -7,7 +8,6 @@ module Axlsx
   #
   # @see Worksheet#add_row
   class Cell
-
     include Axlsx::OptionsParser
 
     # @param [Row] row The row this cell belongs to.
@@ -37,7 +37,6 @@ module Axlsx
       # to get less GC cycles
       type = options.delete(:type) || cell_type_from_value(value)
       self.type = type unless type == :string
-
 
       val = options.delete(:style)
       self.style = val unless val.nil? || val == 0
@@ -108,7 +107,7 @@ module Axlsx
 
     # @see value
     def value=(v)
-      #TODO: consider doing value based type determination first?
+      # TODO: consider doing value based type determination first?
       @value = cast_value(v)
     end
 
@@ -124,11 +123,11 @@ module Axlsx
 
     # Indicates if the cell is good for shared string table
     def plain_string?
-      (type == :string || type == :text) &&         # String typed
+      (type == :string || type == :text) && # String typed
         !is_text_run? &&          # No inline styles
         !@value.nil? &&           # Not nil
         !@value.empty? &&         # Not empty
-        !@value.start_with?(?=)  # Not a formula
+        !@value.start_with?(?=) # Not a formula
     end
 
     # The inline font_name property for the cell
@@ -235,7 +234,7 @@ module Axlsx
     attr_reader :color
     # @param [String] v The 8 character representation for an rgb color #FFFFFFFF"
     def color=(v)
-      @color = v.is_a?(Color) ? v : Color.new(:rgb=>v)
+      @color = v.is_a?(Color) ? v : Color.new(:rgb => v)
       @is_text_run = true
     end
 
@@ -285,7 +284,7 @@ module Axlsx
     # @example Absolute Cell Reference
     #   ws.rows.first.cells.first.r #=> "$A$1"
     def r_abs
-      "$#{r.match(%r{([A-Z]+)([0-9]+)})[1,2].join('$')}"
+      "$#{r.match(%r{([A-Z]+)([0-9]+)})[1, 2].join('$')}"
     end
 
     # @return [Integer] The cellXfs item index applied to this cell.
@@ -294,6 +293,7 @@ module Axlsx
       Axlsx::validate_unsigned_int(v)
       count = styles.cellXfs.size
       raise ArgumentError, "Invalid cellXfs id" unless v < count
+
       @style = v
     end
 
@@ -308,7 +308,7 @@ module Axlsx
     def merge(target)
       start, stop = if target.is_a?(String)
                       [self.r, target]
-                    elsif(target.is_a?(Cell))
+                    elsif (target.is_a?(Cell))
                       Axlsx.sort_cells([self, target]).map { |c| c.r }
                     end
       self.row.worksheet.merge_cells "#{start}:#{stop}" unless stop.nil?
@@ -336,7 +336,7 @@ module Axlsx
     # @param [Boolean] absolute -when false a relative reference will be
     # returned.
     # @return [String]
-    def reference(absolute=true)
+    def reference(absolute = true)
       absolute ? r_abs : r
     end
 
@@ -353,6 +353,7 @@ module Axlsx
     # @return [Float]
     def autowidth
       return if is_formula? || value.nil?
+
       if contains_rich_text?
         string_width('', font_size) + value.autowidth
       elsif styles.cellXfs[style].alignment && styles.cellXfs[style].alignment.wrap_text
@@ -397,6 +398,7 @@ module Axlsx
     # imagemagick and loading metrics for every character.
     def font_size
       return sz if sz
+
       font = styles.fonts[styles.cellXfs[style].fontId] || styles.fonts[0]
       (font.b || (defined?(@b) && @b)) ? (font.sz * 1.5) : font.sz
     end
@@ -404,6 +406,7 @@ module Axlsx
     # Utility method for setting inline style attributes
     def set_run_style(validator, attr, value)
       return unless INLINE_STYLES.include?(attr.to_sym)
+
       Axlsx.send(validator, value) unless validator.nil?
       self.instance_variable_set :"@#{attr.to_s}", value
       @is_text_run = true
@@ -449,6 +452,7 @@ module Axlsx
     # @see Axlsx#date1904
     def cast_value(v)
       return v if v.is_a?(RichText) || v.nil?
+
       case type
       when :date
         self.style = STYLE_DATE if self.style == 0
@@ -467,12 +471,11 @@ module Axlsx
       when :boolean
         v ? 1 : 0
       when :iso_8601
-        #consumer is responsible for ensuring the iso_8601 format when specifying this type
+        # consumer is responsible for ensuring the iso_8601 format when specifying this type
         v
       else
         v.to_s
       end
     end
-
   end
 end

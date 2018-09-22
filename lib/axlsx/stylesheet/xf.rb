@@ -1,9 +1,10 @@
 # encoding: UTF-8
+
 module Axlsx
   # The Xf class defines a formatting record for use in Styles. The recommended way to manage styles for your workbook is with Styles#add_style
   # @see Styles#add_style
   class Xf
-    #does not support extList (ExtensionList)
+    # does not support extList (ExtensionList)
 
     include Axlsx::SerializedAttributes
     include Axlsx::OptionsParser
@@ -23,7 +24,7 @@ module Axlsx
     # @option options [Boolean] applyProtection
     # @option options [CellAlignment] alignment
     # @option options [CellProtection] protection
-    def initialize(options={})
+    def initialize(options = {})
       parse_options options
     end
 
@@ -93,7 +94,7 @@ module Axlsx
     # @return [Boolean]
     attr_reader :applyProtection
 
-      # @see Xf#alignment
+    # @see Xf#alignment
     def alignment=(v) DataTypeValidator.validate "Xf.alignment", CellAlignment, v; @alignment = v end
 
     # @see protection
@@ -104,20 +105,28 @@ module Axlsx
 
     # @see fontId
     def fontId=(v) Axlsx::validate_unsigned_int v; @fontId = v end
+
     # @see fillId
     def fillId=(v) Axlsx::validate_unsigned_int v; @fillId = v end
+
     # @see borderId
     def borderId=(v) Axlsx::validate_unsigned_int v; @borderId = v end
+
     # @see xfId
     def xfId=(v) Axlsx::validate_unsigned_int v; @xfId = v end
+
     # @see quotePrefix
     def quotePrefix=(v) Axlsx::validate_boolean v; @quotePrefix = v end
+
     # @see pivotButton
     def pivotButton=(v) Axlsx::validate_boolean v; @pivotButton = v end
+
     # @see applyNumberFormat
     def applyNumberFormat=(v) Axlsx::validate_boolean v; @applyNumberFormat = v end
+
     # @see applyFont
     def applyFont=(v) Axlsx::validate_boolean v; @applyFont = v end
+
     # @see applyFill
     def applyFill=(v) Axlsx::validate_boolean v; @applyFill = v end
 
@@ -141,7 +150,5 @@ module Axlsx
       protection.to_xml_string(str) if self.protection
       str << '</xf>'
     end
-
-
   end
 end

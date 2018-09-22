@@ -1,8 +1,6 @@
 module Axlsx
-
   # The RichTextRun class creates and self serializing text run.
   class RichTextRun
-
     include Axlsx::OptionsParser
 
     attr_reader :value
@@ -13,7 +11,7 @@ module Axlsx
                      :shadow, :condense, :extend, :u,
                      :vertAlign, :sz, :color, :scheme].freeze
 
-    def initialize(value, options={})
+    def initialize(value, options = {})
       self.value = value
       parse_options(options)
     end
@@ -128,7 +126,7 @@ module Axlsx
     attr_reader :color
     # @param [String] v The 8 character representation for an rgb color #FFFFFFFF"
     def color=(v)
-      @color = v.is_a?(Color) ? v : Color.new(:rgb=>v)
+      @color = v.is_a?(Color) ? v : Color.new(:rgb => v)
     end
 
     # The inline sz property for the cell
@@ -162,6 +160,7 @@ module Axlsx
     # @return [Array]
     def autowidth(widtharray)
       return if value.nil?
+
       if styles.cellXfs[style].alignment && styles.cellXfs[style].alignment.wrap_text
         first = true
         value.to_s.split(/\r?\n/, -1).each do |line|
@@ -181,6 +180,7 @@ module Axlsx
     # Utility method for setting inline style attributes
     def set_run_style(validator, attr, value)
       return unless INLINE_STYLES.include?(attr.to_sym)
+
       Axlsx.send(validator, value) unless validator.nil?
       self.instance_variable_set :"@#{attr.to_s}", value
     end
@@ -190,7 +190,7 @@ module Axlsx
     # @return [String]
     def to_xml_string(str = '')
       valid = RichTextRun::INLINE_STYLES
-      data = Hash[self.instance_values.map{ |k, v| [k.to_sym, v] }]
+      data = Hash[self.instance_values.map { |k, v| [k.to_sym, v] }]
       data = data.select { |key, value| valid.include?(key) && !value.nil? }
 
       str << '<r><rPr>'
@@ -223,6 +223,7 @@ module Axlsx
     # imagemagick and loading metrics for every character.
     def font_size
       return sz if sz
+
       font = styles.fonts[styles.cellXfs[style].fontId] || styles.fonts[0]
       (font.b || (defined?(@b) && @b)) ? (font.sz * 1.5) : font.sz
     end

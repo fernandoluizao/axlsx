@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Axlsx
   # Data validation allows the validation of cell data
   #
@@ -22,7 +23,7 @@ module Axlsx
     # @option options [Boolean] showInputMessage - A boolean value indicating whether to display the input prompt message.
     # @option options [String] sqref - Range over which data validation is applied, in "A1:B2" format.
     # @option options [Symbol] type - The type of data validation.
-    def initialize(options={})
+    def initialize(options = {})
       # defaults
       @formula1 = @formula2 = @error = @errorTitle = @operator = @prompt = @promptTitle = @sqref = nil
       @allowBlank = @showErrorMessage = true
@@ -166,12 +167,11 @@ module Axlsx
     # default none
     attr_reader :type
 
-
     # @see formula1
     def formula1=(v); Axlsx::validate_string(v); @formula1 = v end
 
     # @see formula2
-    def formula2=(v); Axlsx::validate_string(v); @formula2 = v end 
+    def formula2=(v); Axlsx::validate_string(v); @formula2 = v end
 
     # @see allowBlank
     def allowBlank=(v); Axlsx::validate_boolean(v); @allowBlank = v end
@@ -216,8 +216,8 @@ module Axlsx
       valid_attributes = get_valid_attributes
 
       str << '<dataValidation '
-      str << instance_values.map do |key, value| 
-        '' << key << '="' << Axlsx.booleanize(value).to_s << '"' if (valid_attributes.include?(key.to_sym) && !CHILD_ELEMENTS.include?(key.to_sym)) 
+      str << instance_values.map do |key, value|
+        '' << key << '="' << Axlsx.booleanize(value).to_s << '"' if (valid_attributes.include?(key.to_sym) && !CHILD_ELEMENTS.include?(key.to_sym))
       end.join(' ')
       str << '>'
       str << ('<formula1>' << self.formula1 << '</formula1>') if @formula1 and valid_attributes.include?(:formula1)
@@ -225,9 +225,10 @@ module Axlsx
       str << '</dataValidation>'
     end
 
-  private
+    private
+
     def get_valid_attributes
-      attributes = [:allowBlank, :error, :errorStyle, :errorTitle, :prompt, :promptTitle, :showErrorMessage, :showInputMessage, :sqref, :type ]
+      attributes = [:allowBlank, :error, :errorStyle, :errorTitle, :prompt, :promptTitle, :showErrorMessage, :showInputMessage, :sqref, :type]
 
       if [:whole, :decimal, :data, :time, :textLength].include?(@type)
         attributes << [:operator, :formula1]

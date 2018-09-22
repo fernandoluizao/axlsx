@@ -50,5 +50,4 @@ class TestTitle < Test::Unit::TestCase
     assert_equal(1, doc.xpath('//c:strCache').size)
     assert_equal(1, doc.xpath('//c:v[text()="one"]').size)
   end
-
 end

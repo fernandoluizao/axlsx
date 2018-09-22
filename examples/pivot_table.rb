@@ -11,15 +11,19 @@ wb = p.workbook
 def month
   %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec).sample
 end
+
 def year
   %w(2010 2011 2012).sample
 end
+
 def type
   %w(Meat Dairy Beverages Produce).sample
 end
+
 def sales
   rand(5000)
 end
+
 def region
   %w(East West North South).sample
 end

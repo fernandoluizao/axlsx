@@ -1,12 +1,11 @@
 require 'tc_helper'
 
 class TestBarSeries < Test::Unit::TestCase
-
   def setup
     p = Axlsx::Package.new
-    @ws = p.workbook.add_worksheet :name=>"hmmm"
+    @ws = p.workbook.add_worksheet :name => "hmmm"
     @chart = @ws.add_chart Axlsx::Bar3DChart, :title => "fishery"
-    @series = @chart.add_series :data=>[0,1,2], :labels=>["zero", "one", "two"], :title=>"bob", :colors => ['FF0000', '00FF00', '0000FF'], :shape => :cone
+    @series = @chart.add_series :data => [0, 1, 2], :labels => ["zero", "one", "two"], :title => "bob", :colors => ['FF0000', '00FF00', '0000FF'], :shape => :cone
   end
 
   def test_initialize
@@ -30,8 +29,8 @@ class TestBarSeries < Test::Unit::TestCase
   def test_to_xml_string
     doc = Nokogiri::XML(@chart.to_xml_string)
     @series.colors.each_with_index do |color, index|
-      assert_equal(doc.xpath("//c:dPt/c:idx[@val='#{index}']").size,1)
-      assert_equal(doc.xpath("//c:dPt/c:spPr/a:solidFill/a:srgbClr[@val='#{@series.colors[index]}']").size,1)
+      assert_equal(doc.xpath("//c:dPt/c:idx[@val='#{index}']").size, 1)
+      assert_equal(doc.xpath("//c:dPt/c:spPr/a:solidFill/a:srgbClr[@val='#{@series.colors[index]}']").size, 1)
     end
   end
 end

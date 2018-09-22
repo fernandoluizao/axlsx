@@ -1,13 +1,12 @@
 # encoding: UTF-8
-module Axlsx
 
+module Axlsx
   # The Bar3DChart is a three dimentional barchart (who would have guessed?) that you can add to your worksheet.
   # @see Worksheet#add_chart
   # @see Chart#add_series
   # @see Package#serialize
   # @see README for an example
   class Bar3DChart < Chart
-
     # the category axis
     # @return [CatAxis]
     def cat_axis
@@ -41,8 +40,8 @@ module Axlsx
       @gap_width ||= 150
     end
     alias :gapWidth :gap_width
-    
-    #grouping for a column, line, or area chart.
+
+    # grouping for a column, line, or area chart.
     # must be one of  [:percentStacked, :clustered, :standard, :stacked]
     # @return [Symbol]
     def grouping
@@ -76,12 +75,12 @@ module Axlsx
     # @option options [Integer] perspective
     # @see Chart
     # @see View3D
-    def initialize(frame, options={})
+    def initialize(frame, options = {})
       @vary_colors = true
       @gap_width, @gap_depth, @shape = nil, nil, nil
       super(frame, options)
       @series_type = BarSeries
-      @view_3D = View3D.new({:r_ang_ax=>1}.merge(options))
+      @view_3D = View3D.new({ :r_ang_ax => 1 }.merge(options))
       @d_lbls = nil
     end
 
@@ -93,7 +92,7 @@ module Axlsx
     end
     alias :barDir= :bar_dir=
 
-    #grouping for a column, line, or area chart.
+    # grouping for a column, line, or area chart.
     # must be one of  [:percentStacked, :clustered, :standard, :stacked]
     def grouping=(v)
       RestrictionValidator.validate "Bar3DChart.grouping", [:percentStacked, :clustered, :standard, :stacked], v
@@ -103,14 +102,14 @@ module Axlsx
     # space between bar or column clusters, as a percentage of the bar or column width.
     def gap_width=(v)
       RegexValidator.validate "Bar3DChart.gap_width", GAP_AMOUNT_PERCENT, v
-      @gap_width=(v)
+      @gap_width = (v)
     end
     alias :gapWidth= :gap_width=
 
     # space between bar or column clusters, as a percentage of the bar or column width.
     def gap_depth=(v)
       RegexValidator.validate "Bar3DChart.gap_didth", GAP_AMOUNT_PERCENT, v
-      @gap_depth=(v)
+      @gap_depth = (v)
     end
     alias :gapDepth= :gap_depth=
 
@@ -145,7 +144,7 @@ module Axlsx
     # category axes specified via axes[:val_axes] and axes[:cat_axis]
     # @return [Axes]
     def axes
-     @axes ||= Axes.new(:cat_axis => CatAxis, :val_axis => ValAxis)
+      @axes ||= Axes.new(:cat_axis => CatAxis, :val_axis => ValAxis)
     end
   end
 end

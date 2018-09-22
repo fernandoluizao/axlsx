@@ -14,14 +14,12 @@ module Axlsx
 
     # Defines the class level xxx_attr_accessor methods
     module ClassMethods
-
       # Creates one or more string validated attr_accessors
       # @param [Array] symbols An array of symbols representing the
       # names of the attributes you will add to your class.
       def string_attr_accessor(*symbols)
         validated_attr_accessor(symbols, :validate_string)
       end
-
 
       # Creates one or more usigned integer attr_accessors
       # @param [Array] symbols An array of symbols representing the
@@ -51,7 +49,7 @@ module Axlsx
       # @param [Array] symbols The names of the attributes to create
       # @param [String] validator The axlsx validation method to use when
       # validating assignation.
-      # @see lib/axlsx/util/validators.rb 
+      # @see lib/axlsx/util/validators.rb
       def validated_attr_accessor(symbols, validator)
         symbols.each do |symbol|
           attr_reader symbol
@@ -61,4 +59,3 @@ module Axlsx
     end
   end
 end
-

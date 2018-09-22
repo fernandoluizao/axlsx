@@ -1,65 +1,64 @@
 # -*- coding: utf-8 -*-
 module Axlsx
-require 'axlsx/workbook/worksheet/sheet_calc_pr'
-require 'axlsx/workbook/worksheet/auto_filter/auto_filter'
-require 'axlsx/workbook/worksheet/date_time_converter'
-require 'axlsx/workbook/worksheet/protected_range'
-require 'axlsx/workbook/worksheet/protected_ranges'
-require 'axlsx/workbook/worksheet/rich_text_run'
-require 'axlsx/workbook/worksheet/rich_text'
-require 'axlsx/workbook/worksheet/cell_serializer'
-require 'axlsx/workbook/worksheet/cell'
-require 'axlsx/workbook/worksheet/page_margins'
-require 'axlsx/workbook/worksheet/page_set_up_pr'
-require 'axlsx/workbook/worksheet/outline_pr'
-require 'axlsx/workbook/worksheet/page_setup'
-require 'axlsx/workbook/worksheet/header_footer'
-require 'axlsx/workbook/worksheet/print_options'
-require 'axlsx/workbook/worksheet/cfvo'
-require 'axlsx/workbook/worksheet/cfvos'
-require 'axlsx/workbook/worksheet/color_scale'
-require 'axlsx/workbook/worksheet/data_bar'
-require 'axlsx/workbook/worksheet/icon_set'
-require 'axlsx/workbook/worksheet/conditional_formatting'
-require 'axlsx/workbook/worksheet/conditional_formatting_rule'
-require 'axlsx/workbook/worksheet/conditional_formattings'
-require 'axlsx/workbook/worksheet/row'
-require 'axlsx/workbook/worksheet/col'
-require 'axlsx/workbook/worksheet/cols'
-require 'axlsx/workbook/worksheet/comments'
-require 'axlsx/workbook/worksheet/comment'
-require 'axlsx/workbook/worksheet/merged_cells'
-require 'axlsx/workbook/worksheet/sheet_protection'
-require 'axlsx/workbook/worksheet/sheet_pr'
-require 'axlsx/workbook/worksheet/dimension'
-require 'axlsx/workbook/worksheet/sheet_data'
-require 'axlsx/workbook/worksheet/worksheet_drawing'
-require 'axlsx/workbook/worksheet/worksheet_comments'
-require 'axlsx/workbook/worksheet/worksheet_hyperlink'
-require 'axlsx/workbook/worksheet/worksheet_hyperlinks'
-require 'axlsx/workbook/worksheet/break'
-require 'axlsx/workbook/worksheet/row_breaks'
-require 'axlsx/workbook/worksheet/col_breaks'
-require 'axlsx/workbook/workbook_view'
-require 'axlsx/workbook/workbook_views'
+  require 'axlsx/workbook/worksheet/sheet_calc_pr'
+  require 'axlsx/workbook/worksheet/auto_filter/auto_filter'
+  require 'axlsx/workbook/worksheet/date_time_converter'
+  require 'axlsx/workbook/worksheet/protected_range'
+  require 'axlsx/workbook/worksheet/protected_ranges'
+  require 'axlsx/workbook/worksheet/rich_text_run'
+  require 'axlsx/workbook/worksheet/rich_text'
+  require 'axlsx/workbook/worksheet/cell_serializer'
+  require 'axlsx/workbook/worksheet/cell'
+  require 'axlsx/workbook/worksheet/page_margins'
+  require 'axlsx/workbook/worksheet/page_set_up_pr'
+  require 'axlsx/workbook/worksheet/outline_pr'
+  require 'axlsx/workbook/worksheet/page_setup'
+  require 'axlsx/workbook/worksheet/header_footer'
+  require 'axlsx/workbook/worksheet/print_options'
+  require 'axlsx/workbook/worksheet/cfvo'
+  require 'axlsx/workbook/worksheet/cfvos'
+  require 'axlsx/workbook/worksheet/color_scale'
+  require 'axlsx/workbook/worksheet/data_bar'
+  require 'axlsx/workbook/worksheet/icon_set'
+  require 'axlsx/workbook/worksheet/conditional_formatting'
+  require 'axlsx/workbook/worksheet/conditional_formatting_rule'
+  require 'axlsx/workbook/worksheet/conditional_formattings'
+  require 'axlsx/workbook/worksheet/row'
+  require 'axlsx/workbook/worksheet/col'
+  require 'axlsx/workbook/worksheet/cols'
+  require 'axlsx/workbook/worksheet/comments'
+  require 'axlsx/workbook/worksheet/comment'
+  require 'axlsx/workbook/worksheet/merged_cells'
+  require 'axlsx/workbook/worksheet/sheet_protection'
+  require 'axlsx/workbook/worksheet/sheet_pr'
+  require 'axlsx/workbook/worksheet/dimension'
+  require 'axlsx/workbook/worksheet/sheet_data'
+  require 'axlsx/workbook/worksheet/worksheet_drawing'
+  require 'axlsx/workbook/worksheet/worksheet_comments'
+  require 'axlsx/workbook/worksheet/worksheet_hyperlink'
+  require 'axlsx/workbook/worksheet/worksheet_hyperlinks'
+  require 'axlsx/workbook/worksheet/break'
+  require 'axlsx/workbook/worksheet/row_breaks'
+  require 'axlsx/workbook/worksheet/col_breaks'
+  require 'axlsx/workbook/workbook_view'
+  require 'axlsx/workbook/workbook_views'
 
-
-require 'axlsx/workbook/worksheet/worksheet'
-require 'axlsx/workbook/shared_strings_table'
-require 'axlsx/workbook/defined_name'
-require 'axlsx/workbook/defined_names'
-require 'axlsx/workbook/worksheet/table_style_info'
-require 'axlsx/workbook/worksheet/table'
-require 'axlsx/workbook/worksheet/tables'
-require 'axlsx/workbook/worksheet/pivot_table_cache_definition'
-require 'axlsx/workbook/worksheet/pivot_table'
-require 'axlsx/workbook/worksheet/pivot_tables'
-require 'axlsx/workbook/worksheet/data_validation'
-require 'axlsx/workbook/worksheet/data_validations'
-require 'axlsx/workbook/worksheet/sheet_view'
-require 'axlsx/workbook/worksheet/sheet_format_pr'
-require 'axlsx/workbook/worksheet/pane'
-require 'axlsx/workbook/worksheet/selection'
+  require 'axlsx/workbook/worksheet/worksheet'
+  require 'axlsx/workbook/shared_strings_table'
+  require 'axlsx/workbook/defined_name'
+  require 'axlsx/workbook/defined_names'
+  require 'axlsx/workbook/worksheet/table_style_info'
+  require 'axlsx/workbook/worksheet/table'
+  require 'axlsx/workbook/worksheet/tables'
+  require 'axlsx/workbook/worksheet/pivot_table_cache_definition'
+  require 'axlsx/workbook/worksheet/pivot_table'
+  require 'axlsx/workbook/worksheet/pivot_tables'
+  require 'axlsx/workbook/worksheet/data_validation'
+  require 'axlsx/workbook/worksheet/data_validations'
+  require 'axlsx/workbook/worksheet/sheet_view'
+  require 'axlsx/workbook/worksheet/sheet_format_pr'
+  require 'axlsx/workbook/worksheet/pane'
+  require 'axlsx/workbook/worksheet/selection'
   # The Workbook class is an xlsx workbook that manages worksheets, charts, drawings and styles.
   # The following parts of the Office Open XML spreadsheet specification are not implimented in this version.
   #
@@ -84,7 +83,6 @@ require 'axlsx/workbook/worksheet/selection'
   #
   #   *workbookPr is only supported to the extend of date1904
   class Workbook
-
     # When true, the Package will be generated with a shared string table. This may be required by some OOXML processors that do not
     # adhere to the ECMA specification that dictates string may be inline in the sheet.
     # Using this option will increase the time required to serialize the document as every string in every cell must be analzed and referenced.
@@ -106,8 +104,7 @@ require 'axlsx/workbook/worksheet/selection'
       @is_reversed = v
     end
 
-
-   # A collection of worksheets associated with this workbook.
+    # A collection of worksheets associated with this workbook.
     # @note The recommended way to manage worksheets is add_worksheet
     # @see Workbook#add_worksheet
     # @see Worksheet
@@ -136,7 +133,6 @@ require 'axlsx/workbook/worksheet/selection'
     attr_reader :drawings
 
     # pretty sure this two are always empty and can be removed.
-
 
     # A colllection of tables associated with this workbook
     # @note The recommended way to manage drawings is Worksheet#add_table
@@ -184,10 +180,8 @@ require 'axlsx/workbook/worksheet/selection'
       @styles
     end
 
-
     # Indicates if the epoc date for serialization should be 1904. If false, 1900 is used.
     @@date1904 = false
-
 
     # A quick helper to retrive a worksheet by name
     # @param [String] name The name of the sheet you are looking for
@@ -198,18 +192,18 @@ require 'axlsx/workbook/worksheet/selection'
     end
 
     # lets come back to this later when we are ready for parsing.
-    #def self.parse entry
+    # def self.parse entry
     #  io = entry.get_input_stream
     #  w = self.new
     #  w.parser_xml = Nokogiri::XML(io.read)
     #  w.parse_string :date1904, "//xmlns:workbookPr/@date1904"
     #  w
-    #end
+    # end
 
     # Creates a new Workbook
     # The recomended way to work with workbooks is via Package#workbook
     # @option options [Boolean] date1904. If this is not specified, date1904 is set to false. Office 2011 for Mac defaults to false.
-    def initialize(options={})
+    def initialize(options = {})
       @styles = Styles.new
       @worksheets = SimpleTypedList.new Worksheet
       @drawings = SimpleTypedList.new Drawing
@@ -220,10 +214,9 @@ require 'axlsx/workbook/worksheet/selection'
       @pivot_tables = SimpleTypedList.new PivotTable
       @comments = SimpleTypedList.new Comments
 
-
       @use_autowidth = true
 
-      self.date1904= !options[:date1904].nil? && options[:date1904]
+      self.date1904 = !options[:date1904].nil? && options[:date1904]
       yield self if block_given?
     end
 
@@ -250,7 +243,7 @@ require 'axlsx/workbook/worksheet/selection'
     def use_autowidth() @use_autowidth; end
 
     # see @use_autowidth
-    def use_autowidth=(v=true) Axlsx::validate_boolean v; @use_autowidth = v; end
+    def use_autowidth=(v = true) Axlsx::validate_boolean v; @use_autowidth = v; end
 
     # inserts a worksheet into this workbook at the position specified.
     # It the index specified is out of range, the worksheet will be added to the end of the
@@ -260,7 +253,7 @@ require 'axlsx/workbook/worksheet/selection'
     # @param [Hash] options Options to pass into the worksheed during initialization.
     # @option options [String] name The name of the worksheet
     # @option options [Hash] page_margins The page margins for the worksheet
-    def insert_worksheet(index=0, options={})
+    def insert_worksheet(index = 0, options = {})
       worksheet = Worksheet.new(self, options)
       @worksheets.delete_at(@worksheets.size - 1)
       @worksheets.insert(index, worksheet)
@@ -274,7 +267,7 @@ require 'axlsx/workbook/worksheet/selection'
     # @option options [String] name The name of the worksheet.
     # @option options [Hash] page_margins The page margins for the worksheet.
     # @see Worksheet#initialize
-    def add_worksheet(options={})
+    def add_worksheet(options = {})
       worksheet = Worksheet.new(self, options)
       yield worksheet if block_given?
       worksheet
@@ -284,7 +277,7 @@ require 'axlsx/workbook/worksheet/selection'
     # @return WorkbookViews
     # @option options [Hash] options passed into the added WorkbookView
     # @see WorkbookView#initialize
-    def add_view(options={})
+    def add_view(options = {})
       views << WorkbookView.new(options)
     end
 
@@ -301,14 +294,14 @@ require 'axlsx/workbook/worksheet/selection'
     def relationships
       r = Relationships.new
       @worksheets.each do |sheet|
-        r << Relationship.new(sheet, WORKSHEET_R, WORKSHEET_PN % (r.size+1))
+        r << Relationship.new(sheet, WORKSHEET_R, WORKSHEET_PN % (r.size + 1))
       end
       pivot_tables.each_with_index do |pivot_table, index|
-        r << Relationship.new(pivot_table.cache_definition, PIVOT_TABLE_CACHE_DEFINITION_R, PIVOT_TABLE_CACHE_DEFINITION_PN % (index+1))
+        r << Relationship.new(pivot_table.cache_definition, PIVOT_TABLE_CACHE_DEFINITION_R, PIVOT_TABLE_CACHE_DEFINITION_PN % (index + 1))
       end
-      r << Relationship.new(self, STYLES_R,  STYLES_PN)
+      r << Relationship.new(self, STYLES_R, STYLES_PN)
       if use_shared_strings
-          r << Relationship.new(self, SHARED_STRINGS_R, SHARED_STRINGS_PN)
+        r << Relationship.new(self, SHARED_STRINGS_R, SHARED_STRINGS_PN)
       end
       r
     end
@@ -345,13 +338,14 @@ require 'axlsx/workbook/worksheet/selection'
       sheet_name = cell_def.split('!')[0] if cell_def.match('!')
       worksheet =  self.worksheets.select { |s| s.name == sheet_name }.first
       raise ArgumentError, 'Unknown Sheet' unless sheet_name && worksheet.is_a?(Worksheet)
-      worksheet[cell_def.gsub(/.+!/,"")]
+
+      worksheet[cell_def.gsub(/.+!/, "")]
     end
 
     # Serialize the workbook
     # @param [String] str
     # @return [String]
-    def to_xml_string(str='')
+    def to_xml_string(str = '')
       add_worksheet(name: 'Sheet1') unless worksheets.size > 0
       str << '<?xml version="1.0" encoding="UTF-8"?>'
       str << ('<workbook xmlns="' << XML_NS << '" xmlns:r="' << XML_NS_R << '">')
@@ -374,6 +368,5 @@ require 'axlsx/workbook/worksheet/selection'
       end
       str << '</workbook>'
     end
-
   end
 end

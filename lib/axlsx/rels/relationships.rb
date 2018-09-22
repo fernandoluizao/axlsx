@@ -1,11 +1,11 @@
 # encoding: UTF-8
+
 module Axlsx
-require 'axlsx/rels/relationship'
+  require 'axlsx/rels/relationship'
 
   # Relationships are a collection of Relations that define how package parts are related.
   # @note The package automatically manages releationships.
   class Relationships < SimpleTypedList
-
     # Creates a new Relationships collection based on SimpleTypedList
     def initialize
       super Relationship
@@ -15,7 +15,7 @@ require 'axlsx/rels/relationship'
     # @see Relationship#source_obj
     # @return [Relationship]
     def for(source_obj)
-      find{ |rel| rel.source_obj == source_obj }
+      find { |rel| rel.source_obj == source_obj }
     end
 
     # serialize relationships
@@ -24,9 +24,8 @@ require 'axlsx/rels/relationship'
     def to_xml_string(str = '')
       str << '<?xml version="1.0" encoding="UTF-8"?>'
       str << ('<Relationships xmlns="' << RELS_R << '">')
-      each{ |rel| rel.to_xml_string(str) }
+      each { |rel| rel.to_xml_string(str) }
       str << '</Relationships>'
     end
-
   end
 end
