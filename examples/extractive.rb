@@ -12,10 +12,10 @@ data = [['oil-bbl', 9591.411671, 8860.714604, 8237.936509, 7700.523067, 7231.831
 
 p = Axlsx::Package.new
 wb = p.workbook
-wb.add_worksheet(:name => 'volumes') do |ws|
+wb.add_worksheet(name: 'volumes') do |ws|
   # perspective, rotX and rotY flatten the 3D chart
   # hPercent sets the chart height to 100%
-  chart = ws.add_chart(Axlsx::Line3DChart, :perspective => 0, :hPercent => 100, :rotX => 0, :rotY => 0, :start_at => "A4", :end_at => 'M44', :title => 'Monthly forcast for Type Curve Gas secondary - gross ngl')
+  chart = ws.add_chart(Axlsx::Line3DChart, perspective: 0, hPercent: 100, rotX: 0, rotY: 0, start_at: "A4", end_at: 'M44', title: 'Monthly forcast for Type Curve Gas secondary - gross ngl')
 
   # Set up log based scaling and appropriate min/max values for Y axis
   chart.valAxis.scaling.logBase = 10
@@ -37,7 +37,7 @@ wb.add_worksheet(:name => 'volumes') do |ws|
 
   data.each_with_index do |value, index|
     ws.add_row value
-    chart.add_series :data => ws.rows.last.cells[(1..value.size - 1)], :labels => (0..value.size).map { |i| i }, :title => ws.rows.last.cells.first, :color => colors[index]
+    chart.add_series data: ws.rows.last.cells[(1..value.size - 1)], labels: (0..value.size).map { |i| i }, title: ws.rows.last.cells.first, color: colors[index]
   end
 end
 

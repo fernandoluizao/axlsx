@@ -24,7 +24,7 @@ class TestCore < Test::Unit::TestCase
 
   def test_created_as_option
     time = Time.utc(2013, 1, 1, 12, 00)
-    c = Axlsx::Core.new :created => time
+    c = Axlsx::Core.new created: time
     doc = Nokogiri::XML(c.to_xml_string)
     assert_equal(doc.xpath('//dcterms:created').text, time.xmlschema, "dcterms:created incorrect")
   end
@@ -34,7 +34,7 @@ class TestCore < Test::Unit::TestCase
   end
 
   def test_creator_as_option
-    c = Axlsx::Core.new :creator => "some guy"
+    c = Axlsx::Core.new creator: "some guy"
     doc = Nokogiri::XML(c.to_xml_string)
     assert(doc.xpath('//dc:creator').text == "some guy")
   end

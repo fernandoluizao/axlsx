@@ -3,7 +3,7 @@ require 'tc_helper'
 class TestHeaderFooter < Test::Unit::TestCase
   def setup
     @p = Axlsx::Package.new
-    ws = @p.workbook.add_worksheet :name => 'test'
+    ws = @p.workbook.add_worksheet name: 'test'
     @hf = ws.header_footer
   end
 
@@ -23,19 +23,19 @@ class TestHeaderFooter < Test::Unit::TestCase
 
   def test_initialize_with_options
     header_footer = {
-      :odd_header => 'oh',
-      :odd_footer => 'of',
+      odd_header: 'oh',
+      odd_footer: 'of',
 
-      :even_header => 'eh',
-      :even_footer => 'ef',
+      even_header: 'eh',
+      even_footer: 'ef',
 
-      :first_header => 'fh',
-      :first_footer => 'ff',
+      first_header: 'fh',
+      first_footer: 'ff',
 
-      :different_first => true,
-      :different_odd_even => true
+      different_first: true,
+      different_odd_even: true
     }
-    optioned = @p.workbook.add_worksheet(:name => 'optioned', :header_footer => header_footer).header_footer
+    optioned = @p.workbook.add_worksheet(name: 'optioned', header_footer: header_footer).header_footer
 
     assert_equal('oh', optioned.odd_header)
     assert_equal('of', optioned.odd_footer)
@@ -66,17 +66,17 @@ class TestHeaderFooter < Test::Unit::TestCase
 
   def test_set_all_values
     @hf.set(
-      :odd_header => 'oh',
-      :odd_footer => 'of',
+      odd_header: 'oh',
+      odd_footer: 'of',
 
-      :even_header => 'eh',
-      :even_footer => 'ef',
+      even_header: 'eh',
+      even_footer: 'ef',
 
-      :first_header => 'fh',
-      :first_footer => 'ff',
+      first_header: 'fh',
+      first_footer: 'ff',
 
-      :different_first => true,
-      :different_odd_even => true
+      different_first: true,
+      different_odd_even: true
     )
 
     assert_equal('oh', @hf.odd_header)
@@ -94,17 +94,17 @@ class TestHeaderFooter < Test::Unit::TestCase
 
   def test_to_xml_all_values
     @hf.set(
-      :odd_header => 'oh',
-      :odd_footer => 'of',
+      odd_header: 'oh',
+      odd_footer: 'of',
 
-      :even_header => 'eh',
-      :even_footer => 'ef',
+      even_header: 'eh',
+      even_footer: 'ef',
 
-      :first_header => 'fh',
-      :first_footer => 'ff',
+      first_header: 'fh',
+      first_footer: 'ff',
 
-      :different_first => true,
-      :different_odd_even => true
+      different_first: true,
+      different_odd_even: true
     )
 
     doc = Nokogiri::XML.parse(@hf.to_xml_string)
@@ -128,8 +128,8 @@ class TestHeaderFooter < Test::Unit::TestCase
 
   def test_to_xml_some_values
     @hf.set(
-      :odd_header => 'oh',
-      :different_odd_even => false
+      odd_header: 'oh',
+      different_odd_even: false
     )
 
     doc = Nokogiri::XML.parse(@hf.to_xml_string)

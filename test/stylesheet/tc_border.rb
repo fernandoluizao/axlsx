@@ -34,6 +34,6 @@ class TestBorder < Test::Unit::TestCase
   end
 
   def test_prs
-    assert_nothing_raised { @b.prs << Axlsx::BorderPr.new(:name => :top, :style => :thin, :color => Axlsx::Color.new(:rgb => "FF0000FF")) }
+    assert_nothing_raised { @b.prs << Axlsx::BorderPr.new(name: :top, style: :thin, color: Axlsx::Color.new(rgb: "FF0000FF")) }
   end
 end

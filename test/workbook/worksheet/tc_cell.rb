@@ -4,10 +4,10 @@ class TestCell < Test::Unit::TestCase
   def setup
     p = Axlsx::Package.new
     p.use_shared_strings = true
-    @ws = p.workbook.add_worksheet :name => "hmmm"
-    p.workbook.styles.add_style :sz => 20
+    @ws = p.workbook.add_worksheet name: "hmmm"
+    p.workbook.styles.add_style sz: 20
     @row = @ws.add_row
-    @c = @row.add_cell 1, :type => :float, :style => 1
+    @c = @row.add_cell 1, type: :float, style: 1
     data = (0..26).map { |index| index }
     @ws.add_row data
     @cAA = @ws["AA2"]
@@ -57,7 +57,7 @@ class TestCell < Test::Unit::TestCase
   end
 
   def test_autowidth
-    style = @c.row.worksheet.workbook.styles.add_style({ :alignment => { :horizontal => :center, :vertical => :center, :wrap_text => true } })
+    style = @c.row.worksheet.workbook.styles.add_style({ alignment: { horizontal: :center, vertical: :center, wrap_text: true } })
     @c.style = style
     assert_equal(@c.autowidth, 5.5)
   end
@@ -348,18 +348,18 @@ class TestCell < Test::Unit::TestCase
   end
 
   def test_font_size_with_custom_style_and_no_sz
-    @c.style = @c.row.worksheet.workbook.styles.add_style :bg_color => 'FF00FF'
+    @c.style = @c.row.worksheet.workbook.styles.add_style bg_color: 'FF00FF'
     sz = @c.send(:font_size)
     assert_equal(sz, @c.row.worksheet.workbook.styles.fonts.first.sz)
   end
 
   def test_font_size_with_bolding
-    @c.style = @c.row.worksheet.workbook.styles.add_style :b => true
+    @c.style = @c.row.worksheet.workbook.styles.add_style b: true
     assert_equal(@c.row.worksheet.workbook.styles.fonts.first.sz * 1.5, @c.send(:font_size))
   end
 
   def test_font_size_with_custom_sz
-    @c.style = @c.row.worksheet.workbook.styles.add_style :sz => 52
+    @c.style = @c.row.worksheet.workbook.styles.add_style sz: 52
     sz = @c.send(:font_size)
     assert_equal(sz, 52)
   end

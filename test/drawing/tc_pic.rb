@@ -8,7 +8,7 @@ class TestPic < Test::Unit::TestCase
     @test_img_png =  File.dirname(__FILE__) + "/../../examples/image1.png"
     @test_img_gif =  File.dirname(__FILE__) + "/../../examples/image1.gif"
     @test_img_fake = File.dirname(__FILE__) + "/../../examples/image1_fake.jpg"
-    @image = ws.add_image :image_src => @test_img, :hyperlink => 'https://github.com/randym', :tooltip => "What's up doc?", :opacity => 5
+    @image = ws.add_image image_src: @test_img, hyperlink: 'https://github.com/randym', tooltip: "What's up doc?", opacity: 5
   end
 
   def test_initialization

@@ -3,9 +3,9 @@ require 'tc_helper'
 class TestBarSeries < Test::Unit::TestCase
   def setup
     p = Axlsx::Package.new
-    @ws = p.workbook.add_worksheet :name => "hmmm"
-    @chart = @ws.add_chart Axlsx::Bar3DChart, :title => "fishery"
-    @series = @chart.add_series :data => [0, 1, 2], :labels => ["zero", "one", "two"], :title => "bob", :colors => ['FF0000', '00FF00', '0000FF'], :shape => :cone
+    @ws = p.workbook.add_worksheet name: "hmmm"
+    @chart = @ws.add_chart Axlsx::Bar3DChart, title: "fishery"
+    @series = @chart.add_series data: [0, 1, 2], labels: ["zero", "one", "two"], title: "bob", colors: ['FF0000', '00FF00', '0000FF'], shape: :cone
   end
 
   def test_initialize

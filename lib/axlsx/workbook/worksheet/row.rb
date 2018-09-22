@@ -87,7 +87,7 @@ module Axlsx
     # @param [String] str The string this rows xml will be appended to.
     # @return [String]
     def to_xml_string(r_index, str = '')
-      serialized_tag('row', str, :r => r_index + 1) do
+      serialized_tag('row', str, r: r_index + 1) do
         tmp = '' # time / memory tradeoff, lots of calls to rubyzip costs more
         # time..
         each_with_index { |cell, c_index| cell.to_xml_string(r_index, c_index, tmp) }

@@ -38,17 +38,17 @@ wb.styles do |style|
   # Let's look at an example:
   #
   # A style that only applies a font size
-  large_font = wb.styles.add_style :sz => 20
+  large_font = wb.styles.add_style sz: 20
 
   # A style that applies both a font size and a predefined number format.
   # @see NumFmt
-  predefined_format = wb.styles.add_style :sz => 20, :num_fmt => 14
+  predefined_format = wb.styles.add_style sz: 20, num_fmt: 14
 
   # A style that a applies a font size and a custom formatting code
-  custom_format = wb.styles.add_style :sz => 20, :format_code => 'yyyy-mm-dd'
+  custom_format = wb.styles.add_style sz: 20, format_code: 'yyyy-mm-dd'
 
   # A style that overrides top and left border style
-  override_border = wb.styles.add_style :border => { :style => :thin, :color => "FAAC58", :edges => [:right, :top, :left] }, :border_top => { :style => :thick, :color => "01DF74" }, :border_left => { :color => "0101DF" }
+  override_border = wb.styles.add_style border: { style: :thin, color: "FAAC58", edges: [:right, :top, :left] }, border_top: { style: :thick, color: "01DF74" }, border_left: { color: "0101DF" }
 
   wb.add_worksheet do |sheet|
     # We then apply those styles positionally

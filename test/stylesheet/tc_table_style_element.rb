@@ -12,7 +12,7 @@ class TestTableStyleElement < Test::Unit::TestCase
     assert_equal(@item.type, nil)
     assert_equal(@item.size, nil)
     assert_equal(@item.dxfId, nil)
-    options = { :type => :headerRow, :size => 10, :dxfId => 1 }
+    options = { type: :headerRow, size: 10, dxfId: 1 }
 
     tse = Axlsx::TableStyleElement.new options
     options.each { |key, value| assert_equal(tse.send(key.to_sym), value) }

@@ -3,9 +3,9 @@ require 'tc_helper'
 class TestScatterSeries < Test::Unit::TestCase
   def setup
     p = Axlsx::Package.new
-    @ws = p.workbook.add_worksheet :name => "hmmm"
-    @chart = @ws.add_chart Axlsx::ScatterChart, :title => "Scatter Chart"
-    @series = @chart.add_series :xData => [1, 2, 4], :yData => [1, 3, 9], :title => "exponents", :color => 'FF0000', :smooth => true
+    @ws = p.workbook.add_worksheet name: "hmmm"
+    @chart = @ws.add_chart Axlsx::ScatterChart, title: "Scatter Chart"
+    @series = @chart.add_series xData: [1, 2, 4], yData: [1, 3, 9], title: "exponents", color: 'FF0000', smooth: true
   end
 
   def test_initialize
@@ -13,32 +13,32 @@ class TestScatterSeries < Test::Unit::TestCase
   end
 
   def test_smoothed_chart_default_smoothing
-    @chart = @ws.add_chart Axlsx::ScatterChart, :title => "Smooth Chart", :scatter_style => :smoothMarker
-    @series = @chart.add_series :xData => [1, 2, 4], :yData => [1, 3, 9], :title => "smoothed exponents"
+    @chart = @ws.add_chart Axlsx::ScatterChart, title: "Smooth Chart", scatter_style: :smoothMarker
+    @series = @chart.add_series xData: [1, 2, 4], yData: [1, 3, 9], title: "smoothed exponents"
     assert(@series.smooth, "series is smooth by default on smooth charts")
   end
 
   def test_unsmoothed_chart_default_smoothing
-    @chart = @ws.add_chart Axlsx::ScatterChart, :title => "Unsmooth Chart", :scatter_style => :line
-    @series = @chart.add_series :xData => [1, 2, 4], :yData => [1, 3, 9], :title => "unsmoothed exponents"
+    @chart = @ws.add_chart Axlsx::ScatterChart, title: "Unsmooth Chart", scatter_style: :line
+    @series = @chart.add_series xData: [1, 2, 4], yData: [1, 3, 9], title: "unsmoothed exponents"
     assert(!@series.smooth, "series is not smooth by default on non-smooth charts")
   end
 
   def test_explicit_smoothing
-    @chart = @ws.add_chart Axlsx::ScatterChart, :title => "Unsmooth Chart, Smooth Series", :scatter_style => :line
-    @series = @chart.add_series :xData => [1, 2, 4], :yData => [1, 3, 9], :title => "smoothed exponents", :smooth => true
+    @chart = @ws.add_chart Axlsx::ScatterChart, title: "Unsmooth Chart, Smooth Series", scatter_style: :line
+    @series = @chart.add_series xData: [1, 2, 4], yData: [1, 3, 9], title: "smoothed exponents", smooth: true
     assert(@series.smooth, "series is smooth when overriding chart default")
   end
 
   def test_explicit_unsmoothing
-    @chart = @ws.add_chart Axlsx::ScatterChart, :title => "Smooth Chart, Unsmooth Series", :scatter_style => :smoothMarker
-    @series = @chart.add_series :xData => [1, 2, 4], :yData => [1, 3, 9], :title => "unsmoothed exponents", :smooth => false
+    @chart = @ws.add_chart Axlsx::ScatterChart, title: "Smooth Chart, Unsmooth Series", scatter_style: :smoothMarker
+    @series = @chart.add_series xData: [1, 2, 4], yData: [1, 3, 9], title: "unsmoothed exponents", smooth: false
     assert(!@series.smooth, "series is not smooth when overriding chart default")
   end
 
   def test_ln_width
-    @chart = @ws.add_chart Axlsx::ScatterChart, :title => "ln width", :scatter_style => :line
-    @series = @chart.add_series :xData => [1, 2, 4], :yData => [1, 3, 9], :title => "ln_width"
+    @chart = @ws.add_chart Axlsx::ScatterChart, title: "ln width", scatter_style: :line
+    @series = @chart.add_series xData: [1, 2, 4], yData: [1, 3, 9], title: "ln_width"
     @series.ln_width = 12700
     assert_equal(@series.ln_width, 12700, 'line width assigment is allowed')
   end

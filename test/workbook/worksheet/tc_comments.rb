@@ -5,8 +5,8 @@ class TestComments < Test::Unit::TestCase
     p = Axlsx::Package.new
     wb = p.workbook
     @ws = wb.add_worksheet
-    @c1 = @ws.add_comment :ref => 'A1', :text => 'penut machine', :author => 'crank'
-    @c2 = @ws.add_comment :ref => 'C3', :text => 'rust bucket', :author => 'PO'
+    @c1 = @ws.add_comment ref: 'A1', text: 'penut machine', author: 'crank'
+    @c2 = @ws.add_comment ref: 'C3', text: 'rust bucket', author: 'PO'
   end
 
   def test_initialize
@@ -17,18 +17,18 @@ class TestComments < Test::Unit::TestCase
   def test_add_comment
     assert_equal(@ws.comments.size, 2)
     assert_raise(ArgumentError) { @ws.comments.add_comment() }
-    assert_raise(ArgumentError) { @ws.comments.add_comment(:text => 'Yes We Can', :ref => 'A1') }
-    assert_raise(ArgumentError) { @ws.comments.add_comment(:author => 'bob', :ref => 'A1') }
-    assert_raise(ArgumentError) { @ws.comments.add_comment(:author => 'bob', :text => 'Yes We Can') }
-    assert_nothing_raised { @ws.comments.add_comment(:author => 'bob', :text => 'Yes We Can', :ref => 'A1') }
+    assert_raise(ArgumentError) { @ws.comments.add_comment(text: 'Yes We Can', ref: 'A1') }
+    assert_raise(ArgumentError) { @ws.comments.add_comment(author: 'bob', ref: 'A1') }
+    assert_raise(ArgumentError) { @ws.comments.add_comment(author: 'bob', text: 'Yes We Can') }
+    assert_nothing_raised { @ws.comments.add_comment(author: 'bob', text: 'Yes We Can', ref: 'A1') }
     assert_equal(@ws.comments.size, 3)
   end
 
   def test_authors
     assert_equal(@ws.comments.authors.size, @ws.comments.size)
-    @ws.add_comment(:text => 'Yes We Can!', :author => 'bob', :ref => 'F1')
+    @ws.add_comment(text: 'Yes We Can!', author: 'bob', ref: 'F1')
     assert_equal(@ws.comments.authors.size, 3)
-    @ws.add_comment(:text => 'Yes We Can!', :author => 'bob', :ref => 'F1')
+    @ws.add_comment(text: 'Yes We Can!', author: 'bob', ref: 'F1')
     assert_equal(@ws.comments.authors.size, 3, 'only unique authors are returned')
   end
 

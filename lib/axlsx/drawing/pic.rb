@@ -192,7 +192,7 @@ module Axlsx
     def use_one_cell_anchor
       return if @anchor.is_a?(OneCellAnchor)
 
-      new_anchor = OneCellAnchor.new(@anchor.drawing, :start_at => [@anchor.from.col, @anchor.from.row])
+      new_anchor = OneCellAnchor.new(@anchor.drawing, start_at: [@anchor.from.col, @anchor.from.row])
       swap_anchor(new_anchor)
     end
 
@@ -200,7 +200,7 @@ module Axlsx
     def use_two_cell_anchor
       return if @anchor.is_a?(TwoCellAnchor)
 
-      new_anchor = TwoCellAnchor.new(@anchor.drawing, :start_at => [@anchor.from.col, @anchor.from.row])
+      new_anchor = TwoCellAnchor.new(@anchor.drawing, start_at: [@anchor.from.col, @anchor.from.row])
       swap_anchor(new_anchor)
     end
 

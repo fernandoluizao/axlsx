@@ -52,7 +52,7 @@ class RandomReportGenerator
     package  = Axlsx::Package.new
     workbook = package.workbook
 
-    workbook.add_worksheet(:name => "Data Sheet") do |sheet|
+    workbook.add_worksheet(name: "Data Sheet") do |sheet|
       sheet.add_row [
         "Date", "Member ID", "Name", "Gender", "Age", "City", "State",
         "Parenting Status", "Student Status", "Income", "Education", "Answer"
@@ -63,10 +63,10 @@ class RandomReportGenerator
       end
     end
 
-    workbook.add_worksheet(:name => "Summary") do |sheet|
+    workbook.add_worksheet(name: "Summary") do |sheet|
       pivot_table = Axlsx::PivotTable.new 'A1:B15', "A1:L31", workbook.worksheets[0]
       pivot_table.rows = ['Answer']
-      pivot_table.data = [{ :ref => "Member ID", :subtotal => "count" }]
+      pivot_table.data = [{ ref: "Member ID", subtotal: "count" }]
       sheet.pivot_tables << pivot_table
     end
 

@@ -28,7 +28,7 @@ def region
   %w(East West North South).sample
 end
 
-wb.add_worksheet(:name => "Data Sheet") do |sheet|
+wb.add_worksheet(name: "Data Sheet") do |sheet|
   sheet.add_row ['Month', 'Year', 'Type', 'Sales', 'Region']
   30.times { sheet.add_row [month, year, type, sales, region] }
   sheet.add_pivot_table 'G4:L17', "A1:E31" do |pivot_table|

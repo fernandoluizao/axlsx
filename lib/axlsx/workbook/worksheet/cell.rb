@@ -234,7 +234,7 @@ module Axlsx
     attr_reader :color
     # @param [String] v The 8 character representation for an rgb color #FFFFFFFF"
     def color=(v)
-      @color = v.is_a?(Color) ? v : Color.new(:rgb => v)
+      @color = v.is_a?(Color) ? v : Color.new(rgb: v)
       @is_text_run = true
     end
 

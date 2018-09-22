@@ -81,7 +81,7 @@ module Axlsx
         @series.each { |ser| ser.to_xml_string(str) }
         @d_lbls.to_xml_string(str) if @d_lbls
         yield if block_given?
-        axes.to_xml_string(str, :ids => true)
+        axes.to_xml_string(str, ids: true)
         str << ("</c:" << node_name << ">")
         axes.to_xml_string(str)
       end
@@ -91,7 +91,7 @@ module Axlsx
     # axis.
     # @return [Axes]
     def axes
-      @axes ||= Axes.new(:cat_axis => CatAxis, :val_axis => ValAxis)
+      @axes ||= Axes.new(cat_axis: CatAxis, val_axis: ValAxis)
     end
   end
 end

@@ -3,8 +3,8 @@ require 'tc_helper'
 class RichTextRun < Test::Unit::TestCase
   def setup
     @p = Axlsx::Package.new
-    @ws = @p.workbook.add_worksheet :name => "hmmmz"
-    @p.workbook.styles.add_style :sz => 20
+    @ws = @p.workbook.add_worksheet name: "hmmmz"
+    @p.workbook.styles.add_style sz: 20
     @rtr = Axlsx::RichTextRun.new('hihihi', b: true, i: false)
     @rtr2 = Axlsx::RichTextRun.new('hihi2hi2', b: false, i: true)
     @rt = Axlsx::RichText.new
@@ -21,7 +21,7 @@ class RichTextRun < Test::Unit::TestCase
   end
 
   def test_font_size_with_custom_style_and_no_sz
-    @c.style = @c.row.worksheet.workbook.styles.add_style :bg_color => 'FF00FF'
+    @c.style = @c.row.worksheet.workbook.styles.add_style bg_color: 'FF00FF'
     sz = @rtr.send(:font_size)
     assert_equal(sz, @c.row.worksheet.workbook.styles.fonts.first.sz * 1.5)
     sz = @rtr2.send(:font_size)
@@ -29,13 +29,13 @@ class RichTextRun < Test::Unit::TestCase
   end
 
   def test_font_size_with_bolding
-    @c.style = @c.row.worksheet.workbook.styles.add_style :b => true
+    @c.style = @c.row.worksheet.workbook.styles.add_style b: true
     assert_equal(@c.row.worksheet.workbook.styles.fonts.first.sz * 1.5, @rtr.send(:font_size))
     assert_equal(@c.row.worksheet.workbook.styles.fonts.first.sz * 1.5, @rtr2.send(:font_size)) # is this the correct behaviour?
   end
 
   def test_font_size_with_custom_sz
-    @c.style = @c.row.worksheet.workbook.styles.add_style :sz => 52
+    @c.style = @c.row.worksheet.workbook.styles.add_style sz: 52
     sz = @rtr.send(:font_size)
     assert_equal(sz, 52 * 1.5)
     sz2 = @rtr2.send(:font_size)
@@ -141,11 +141,11 @@ class RichTextRun < Test::Unit::TestCase
   end
 
   def test_multiline_autowidth
-    wrap = @p.workbook.styles.add_style({ :alignment => { :wrap_text => true } })
-    awtr = Axlsx::RichTextRun.new('I\'m bold' + "\n", :b => true)
+    wrap = @p.workbook.styles.add_style({ alignment: { wrap_text: true } })
+    awtr = Axlsx::RichTextRun.new('I\'m bold' + "\n", b: true)
     rt = Axlsx::RichText.new
     rt.runs << awtr
-    @ws.add_row [rt], :style => wrap
+    @ws.add_row [rt], style: wrap
     ar = [0]
     awtr.autowidth(ar)
     assert_equal(ar.length, 2)

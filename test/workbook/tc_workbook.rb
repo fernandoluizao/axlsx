@@ -10,7 +10,7 @@ class TestWorkbook < Test::Unit::TestCase
   end
 
   def test_worksheet_users_xml_space
-    sheet = @wb.add_worksheet(:name => 'foo')
+    sheet = @wb.add_worksheet(name: 'foo')
     ws_xml = Nokogiri::XML(sheet.to_xml_string)
     assert(ws_xml.xpath("//xmlns:worksheet/@xml:space='preserve'"))
 
@@ -41,8 +41,8 @@ class TestWorkbook < Test::Unit::TestCase
   end
 
   def test_sheet_by_name_retrieval
-    @wb.add_worksheet(:name => 'foo')
-    @wb.add_worksheet(:name => 'bar')
+    @wb.add_worksheet(name: 'foo')
+    @wb.add_worksheet(name: 'bar')
     assert_equal('foo', @wb.sheet_by_name('foo').name)
   end
 
@@ -55,7 +55,7 @@ class TestWorkbook < Test::Unit::TestCase
   end
 
   def test_add_defined_name
-    @wb.add_defined_name 'Sheet1!1:1', :name => '_xlnm.Print_Titles', :hidden => true
+    @wb.add_defined_name 'Sheet1!1:1', name: '_xlnm.Print_Titles', hidden: true
     assert_equal(1, @wb.defined_names.size)
   end
 
@@ -72,16 +72,16 @@ class TestWorkbook < Test::Unit::TestCase
 
   def test_add_worksheet
     assert(@wb.worksheets.empty?, "worbook has no worksheets by default")
-    ws = @wb.add_worksheet(:name => "bob")
+    ws = @wb.add_worksheet(name: "bob")
     assert_equal(@wb.worksheets.size, 1, "add_worksheet adds a worksheet!")
     assert_equal(@wb.worksheets.first, ws, "the worksheet returned is the worksheet added")
     assert_equal(ws.name, "bob", "name option gets passed to worksheet")
   end
 
   def test_insert_worksheet
-    @wb.add_worksheet(:name => 'A')
-    @wb.add_worksheet(:name => 'B')
-    ws3 = @wb.insert_worksheet(0, :name => 'C')
+    @wb.add_worksheet(name: 'A')
+    @wb.add_worksheet(name: 'B')
+    ws3 = @wb.insert_worksheet(0, name: 'C')
     assert_equal(ws3.name, @wb.worksheets.first.name)
   end
 
@@ -107,14 +107,14 @@ class TestWorkbook < Test::Unit::TestCase
 
   def test_to_xml_reversed
     @wb.is_reversed = true
-    @wb.add_worksheet(:name => 'first')
-    second = @wb.add_worksheet(:name => 'second')
+    @wb.add_worksheet(name: 'first')
+    second = @wb.add_worksheet(name: 'second')
     doc = Nokogiri::XML(@wb.to_xml_string)
     assert_equal second.name, doc.xpath('//xmlns:workbook/xmlns:sheets/*[1]/@name').to_s
   end
 
   def test_range_requires_valid_sheet
-    ws = @wb.add_worksheet :name => 'fish'
+    ws = @wb.add_worksheet name: 'fish'
     ws.add_row [1, 2, 3]
     ws.add_row [4, 5, 6]
     assert_raise(ArgumentError, "no sheet name part") { @wb["A1:C2"] }
@@ -153,7 +153,7 @@ class TestWorkbook < Test::Unit::TestCase
   end
 
   def test_worksheet_name_is_intact_after_serialized_into_xml
-    sheet = @wb.add_worksheet(:name => '_Example')
+    sheet = @wb.add_worksheet(name: '_Example')
     wb_xml = Nokogiri::XML(@wb.to_xml_string)
     assert_equal sheet.name, wb_xml.xpath('//xmlns:workbook/xmlns:sheets/*[1]/@name').to_s
   end

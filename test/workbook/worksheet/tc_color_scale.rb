@@ -30,7 +30,7 @@ class TestColorScale < Test::Unit::TestCase
   end
 
   def test_partial_default_cfvo_override
-    first_def = { :type => :percent, :val => "10.0", :color => 'FF00FF00' }
+    first_def = { type: :percent, val: "10.0", color: 'FF00FF00' }
     color_scale = Axlsx::ColorScale.new(first_def)
     assert_equal color_scale.value_objects.first.val, first_def[:val]
     assert_equal color_scale.value_objects.first.type, first_def[:type]
@@ -38,13 +38,13 @@ class TestColorScale < Test::Unit::TestCase
   end
 
   def test_add
-    @color_scale.add :type => :max, :val => 5, :color => "FFDEDEDE"
+    @color_scale.add type: :max, val: 5, color: "FFDEDEDE"
     assert_equal(@color_scale.value_objects.size, 3)
     assert_equal(@color_scale.colors.size, 3)
   end
 
   def test_delete_at
-    @color_scale.add :type => :max, :val => 5, :color => "FFDEDEDE"
+    @color_scale.add type: :max, val: 5, color: "FFDEDEDE"
     assert_nothing_raised { @color_scale.delete_at 2 }
     assert_equal(@color_scale.value_objects.size, 2)
     assert_equal(@color_scale.colors.size, 2)

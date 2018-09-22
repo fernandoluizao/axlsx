@@ -108,7 +108,7 @@ module Axlsx
       @data = []
       v.each do |data_field|
         if data_field.is_a? String
-          data_field = { :ref => data_field }
+          data_field = { ref: data_field }
         end
         data_field.values.each do |value|
           DataTypeValidator.validate "#{self.class}.data[]", [String], value

@@ -88,11 +88,11 @@ class TestWorksheet < Test::Unit::TestCase
   end
 
   def test_initialization_options
-    page_margins = { :left => 2, :right => 2, :bottom => 2, :top => 2, :header => 2, :footer => 2 }
-    page_setup = { :fit_to_height => 1, :fit_to_width => 1, :orientation => :landscape, :paper_width => "210mm", :paper_height => "297mm", :scale => 80 }
-    print_options = { :grid_lines => true, :headings => true, :horizontal_centered => true, :vertical_centered => true }
-    header_footer = { :different_first => false, :different_odd_even => false, :odd_header => 'Header' }
-    optioned = @ws.workbook.add_worksheet(:name => 'bob', :page_margins => page_margins, :page_setup => page_setup, :print_options => print_options, :header_footer => header_footer)
+    page_margins = { left: 2, right: 2, bottom: 2, top: 2, header: 2, footer: 2 }
+    page_setup = { fit_to_height: 1, fit_to_width: 1, orientation: :landscape, paper_width: "210mm", paper_height: "297mm", scale: 80 }
+    print_options = { grid_lines: true, headings: true, horizontal_centered: true, vertical_centered: true }
+    header_footer = { different_first: false, different_odd_even: false, odd_header: 'Header' }
+    optioned = @ws.workbook.add_worksheet(name: 'bob', page_margins: page_margins, page_setup: page_setup, print_options: print_options, header_footer: header_footer)
     page_margins.keys.each do |key|
       assert_equal(page_margins[key], optioned.page_margins.send(key))
     end
@@ -207,7 +207,7 @@ class TestWorksheet < Test::Unit::TestCase
     @ws.add_row [1, 2, 3, 4]
     @ws.add_row [1, 2, 3, 4]
     @ws.add_row [1, 2, 3, 4]
-    @ws.col_style((1..2), 1, :row_offset => 1)
+    @ws.col_style((1..2), 1, row_offset: 1)
     @ws.rows[(1..-1)].each do |r|
       assert_equal(r.cells[1].style, 1)
       assert_equal(r.cells[2].style, 1)
@@ -245,13 +245,13 @@ class TestWorksheet < Test::Unit::TestCase
     @ws.add_row [1, 2, 3, 4]
     @ws.add_row [1, 2, 3, 4]
     @ws.add_row [1, 2, 3, 4]
-    @ws.row_style 1, 1, :col_offset => 1
+    @ws.row_style 1, 1, col_offset: 1
     @ws.rows[1].cells[(1..-1)].each do |c|
       assert_equal(c.style, 1)
     end
     assert_equal(@ws.rows[1].cells[0].style, 0)
     assert_equal(@ws.rows[2].cells[1].style, 0)
-    @ws.row_style(1..2, 1, :col_offset => 2)
+    @ws.row_style(1..2, 1, col_offset: 2)
     @ws.rows[(1..2)].each do |r|
       r.cells[(2..-1)].each do |c|
         assert_equal(c.style, 1)
@@ -422,9 +422,9 @@ class TestWorksheet < Test::Unit::TestCase
   # Make sure the XML for all optional elements (like pageMargins, autoFilter, ...)
   # is generated in correct order.
   def test_valid_with_optional_elements
-    @ws.page_margins.set :left => 9
-    @ws.page_setup.set :fit_to_width => 1
-    @ws.print_options.set :headings => true
+    @ws.page_margins.set left: 9
+    @ws.page_setup.set fit_to_width: 1
+    @ws.print_options.set headings: true
     @ws.auto_filter.range = "A1:C3"
     @ws.merge_cells "A4:A5"
     @ws.add_chart Axlsx::Pie3DChart
@@ -442,21 +442,21 @@ class TestWorksheet < Test::Unit::TestCase
     assert_equal(@ws.relationships.size, 1, "adding a chart creates the relationship")
     @ws.add_chart Axlsx::Pie3DChart
     assert_equal(@ws.relationships.size, 1, "multiple charts still only result in one relationship")
-    @ws.add_comment :text => 'builder', :author => 'bob', :ref => @ws.rows.last.cells.last
+    @ws.add_comment text: 'builder', author: 'bob', ref: @ws.rows.last.cells.last
     assert_equal(@ws.relationships.size, 3, "adding a comment adds 2 relationships")
-    @ws.add_comment :text => 'not that is a comment!', :author => 'travis', :ref => "A1"
+    @ws.add_comment text: 'not that is a comment!', author: 'travis', ref: "A1"
     assert_equal(@ws.relationships.size, 3, "adding multiple comments in the same worksheet should not add any additional comment relationships")
     @ws.add_pivot_table 'G5:G6', 'A1:D10'
     assert_equal(@ws.relationships.size, 4, "adding a pivot table adds 1 relationship")
   end
 
   def test_name_unique
-    assert_raise(ArgumentError, "worksheet name must be unique") { n = @ws.name; @ws.workbook.add_worksheet(:name => n) }
+    assert_raise(ArgumentError, "worksheet name must be unique") { n = @ws.name; @ws.workbook.add_worksheet(name: n) }
   end
 
   def test_name_unique_only_checks_other_worksheet_names
     assert_nothing_raised { @ws.name = @ws.name }
-    assert_nothing_raised { Axlsx::Package.new.workbook.add_worksheet :name => 'Sheet1' }
+    assert_nothing_raised { Axlsx::Package.new.workbook.add_worksheet name: 'Sheet1' }
   end
 
   def test_name_size
@@ -465,14 +465,14 @@ class TestWorksheet < Test::Unit::TestCase
   end
 
   def test_set_fixed_width_column
-    @ws.add_row ["mule", "donkey", "horse"], :widths => [20, :ignore, nil]
+    @ws.add_row ["mule", "donkey", "horse"], widths: [20, :ignore, nil]
     assert(@ws.column_info.size == 3, "a data item for each column")
     assert_equal(20, @ws.column_info[0].width, "adding a row with fixed width updates :fixed attribute")
     assert_equal(@ws.column_info[1].width, nil, ":ignore does not set any data")
   end
 
   def test_fixed_height
-    @ws.add_row [1, 2, 3], :height => 40
+    @ws.add_row [1, 2, 3], height: 40
     assert_equal(40, @ws.rows[-1].height)
   end
 
@@ -551,7 +551,7 @@ class TestWorksheet < Test::Unit::TestCase
 
   def test_sheet_pr_for_auto_filter
     @ws.auto_filter.range = 'A1:D9'
-    @ws.auto_filter.add_column 0, :filters, :filter_items => [1]
+    @ws.auto_filter.add_column 0, :filters, filter_items: [1]
     doc = Nokogiri::XML(@ws.to_xml_string)
     assert(doc.xpath('//sheetPr[@filterMode=1]'))
   end
@@ -574,7 +574,7 @@ class TestWorksheet < Test::Unit::TestCase
 
   def test_worksheet_does_not_get_added_to_workbook_on_initialize_failure
     assert_equal(1, @wb.worksheets.size)
-    assert_raise(ArgumentError) { @wb.add_worksheet(:name => 'Sheet1') }
+    assert_raise(ArgumentError) { @wb.add_worksheet(name: 'Sheet1') }
     assert_equal(1, @wb.worksheets.size)
   end
 

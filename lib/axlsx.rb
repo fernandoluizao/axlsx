@@ -82,7 +82,7 @@ module Axlsx
     raise ArgumentError, 'invalid cell name' unless name.size > 1
 
     # capitalization?!?
-    v = name[/[A-Z]+/].reverse.chars.reduce({ :base => 1, :i => 0 }) do |val, c|
+    v = name[/[A-Z]+/].reverse.chars.reduce({ base: 1, i: 0 }) do |val, c|
       val[:i] += ((c.bytes.first - 64) * val[:base]); val[:base] *= 26; val
     end
     [v[:i] - 1, ((name[/[1-9][0-9]*/]).to_i) - 1]

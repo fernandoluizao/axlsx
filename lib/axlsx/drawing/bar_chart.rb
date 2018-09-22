@@ -126,7 +126,7 @@ module Axlsx
         str << ('<c:gapWidth val="' << @gap_width.to_s << '"/>') unless @gap_width.nil?
         str << ('<c:gapDepth val="' << @gap_depth.to_s << '"/>') unless @gap_depth.nil?
         str << ('<c:shape val="' << @shape.to_s << '"/>') unless @shape.nil?
-        axes.to_xml_string(str, :ids => true)
+        axes.to_xml_string(str, ids: true)
         str << '</c:barChart>'
         axes.to_xml_string(str)
       end
@@ -136,7 +136,7 @@ module Axlsx
     # category axes specified via axes[:val_axes] and axes[:cat_axis]
     # @return [Axes]
     def axes
-      @axes ||= Axes.new(:cat_axis => CatAxis, :val_axis => ValAxis)
+      @axes ||= Axes.new(cat_axis: CatAxis, val_axis: ValAxis)
     end
   end
 end

@@ -12,8 +12,8 @@ module Axlsx
     class << self
       # This differs from ColorScale. There must be exactly two cfvos one color
       def default_cfvos
-        [{ :type => :min, :val => "0" },
-         { :type => :max, :val => "0" }]
+        [{ type: :min, val: "0" },
+         { type: :max, val: "0" }]
       end
     end
 
@@ -70,7 +70,7 @@ module Axlsx
     # the color object used in the data bar formatting
     # @return [Color]
     def color
-      @color ||= Color.new :rgb => "FF0000FF"
+      @color ||= Color.new rgb: "FF0000FF"
     end
 
     # @see minLength

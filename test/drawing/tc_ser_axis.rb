@@ -9,7 +9,7 @@ class TestSerAxis < Test::Unit::TestCase
   end
 
   def test_options
-    a = Axlsx::SerAxis.new(:tick_lbl_skip => 9, :tick_mark_skip => 7)
+    a = Axlsx::SerAxis.new(tick_lbl_skip: 9, tick_mark_skip: 7)
     assert_equal(a.tick_lbl_skip, 9)
     assert_equal(a.tick_mark_skip, 7)
   end
