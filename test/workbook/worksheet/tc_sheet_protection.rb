@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'tc_helper'
 
 # <xsd:complexType name="CT_SheetProtection">

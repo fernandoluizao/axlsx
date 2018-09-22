@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # A PieSeries defines the data and labels and explosion for pie charts series.
   # @note The recommended way to manage series is to use Chart#add_series

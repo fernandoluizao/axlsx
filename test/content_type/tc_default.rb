@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'tc_helper'
 
 class TestDefault < Test::Unit::TestCase

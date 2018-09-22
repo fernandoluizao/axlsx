@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   require 'axlsx/content_type/abstract_content_type'
   require 'axlsx/content_type/default'

@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # The Scaling class defines axis scaling
   class Scaling

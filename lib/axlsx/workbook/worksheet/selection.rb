@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # Selection options for worksheet panes.
   #

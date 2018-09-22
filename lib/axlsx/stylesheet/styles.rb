@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   require 'axlsx/stylesheet/border'
   require 'axlsx/stylesheet/border_pr'

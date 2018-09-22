@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # The core object for the package.
   # @note Packages manage their own core object.

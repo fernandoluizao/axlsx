@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   require 'axlsx/drawing/d_lbls'
   require 'axlsx/drawing/title'

@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # View options for a worksheet.
   #

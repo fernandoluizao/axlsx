@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'cgi'
 module Axlsx
   # A cell in a worksheet.

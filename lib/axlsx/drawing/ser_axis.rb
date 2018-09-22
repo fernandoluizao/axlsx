@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # A SerAxis object defines a series axis
   class SerAxis < Axis

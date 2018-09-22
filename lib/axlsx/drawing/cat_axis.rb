@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # A CatAxis object defines a chart category axis
   class CatAxis < Axis

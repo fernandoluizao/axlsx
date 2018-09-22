@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Axlsx
   # The Storage class represents a storage object or stream in a compound file.
   class Storage
